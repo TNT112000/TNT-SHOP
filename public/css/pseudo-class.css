@@ -1,0 +1,48 @@
+a:hover {
+    color:unset;
+    text-decoration: none;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color:unset;
+}
+.list_link_page:hover{
+    color:white;
+    font-size: 16px;
+    text-decoration: none;
+}
+.box_header_cart_item:hover{
+    cursor: pointer;
+}
+.box_header_contact_icon:hover{
+    cursor: pointer;
+}
+.img_logo:hover{
+    cursor: pointer;
+}
+.header_home:hover{
+    color: white;
+    cursor: pointer;
+}
+.category_product_item:hover{
+    cursor: pointer;
+    background-color: #eee;
+}
+.section_item_after::after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top:0;
+    right: 0;
+    background-color:#ddd;
+}
+.list_product_btn_cart:hover{
+    background-color: black;
+    color: white;
+}
+.list_product_btn_buy:hover{
+    background-color: red;
+    color: white;
+}
