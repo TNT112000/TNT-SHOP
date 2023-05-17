@@ -20,4 +20,9 @@ function show_variable($sample){
         return $$sample;
     }
 }
+function navigation($url ='?page=home'){
+   if(!empty($url)){
+    header("location: {$url}");
+   }
+} 
 ?>

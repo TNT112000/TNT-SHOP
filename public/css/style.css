@@ -146,6 +146,36 @@ input:focus {
 
 /* ======================================= */
 /* HEADER */
+.box_list_user{
+    display: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    top: 37px;
+    right: 0;
+    position: absolute;
+    width: 145px;
+    background-color: white;
+}
+.header_user{
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img_user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 35px;
+}
+.img_user_item{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
 .main_app{
     width: 100%;
     height: 100%;
@@ -170,6 +200,7 @@ input:focus {
 }
 
 .list_item_page{
+    align-items: center;
     display: flex;
     margin-right: 3px;
 }
@@ -289,6 +320,14 @@ input:focus {
     height: 38px;
     border: 2px solid white;
     border-radius: 38px;
+}
+.list_user_item{
+    padding: 7px 10px 7px 10px;
+    border-bottom: 1px solid #ccc;
+}
+.list_user_item_link{
+    font-size: 16px;
+    font-weight: 700;
 }
 
 /* ========================================= */

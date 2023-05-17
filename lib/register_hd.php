@@ -57,8 +57,9 @@ if (isset($_POST["btn_register"])) {
     if (empty($error)) {
         $sql = "SELECT * from tai_khoan where tên_đăng_nhập='{$_POST["username"]}'";
         $result = mysqli_query($conn, $sql);
-        $password = md5($password);
+        
         if (mysqli_num_rows($result) < 1) {
+            $password = md5($password);
             $level = '0';
             $sql = "INSERT INTO tai_khoan (tên_đăng_nhập,mật_khẩu,email,ngày_tạo,cấp_bậc) VALUES ('$username','$password','$email',NOW(),'$level')";
             $result = mysqli_query($conn, $sql);
@@ -71,6 +72,7 @@ if (isset($_POST["btn_register"])) {
             }
         } else {
             $error["register"] = "Tên đăng nhập đã tồn tại";
+           
         }
     }
     mysqli_close($conn);

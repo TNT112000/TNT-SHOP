@@ -46,3 +46,10 @@ a{
     background-color: red;
     color: white;
 }
+.list_user_item:hover{
+    background-color: #ccc;
+    color: white;
+}
+.header_user:hover .box_list_user{
+    display: block;
+}

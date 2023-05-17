@@ -1,6 +1,3 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,8 +27,23 @@
                             <li class=""><a href="?page=blog" class="list_link_page">Blog</a></li>
                             <li class=""><a href="?page=introduce" class="list_link_page">Giới thiệu</a></li>
                             <li class=""><a href="?page=contact" class="list_link_page">Liên hệ</a></li>
-                            <li class=""><a href="?page=register" class="list_link_page">Đăng ký</a></li>
-                            <li class=""><a href="?page=login" class="list_link_page">Đăng nhập</a></li>
+                            <?php if (isset($_SESSION["is_login"])) {
+                                if ($_SESSION["is_login"]) { ?><div class="header_user">
+                                        <li class=""><a class="list_link_page"><?php echo $_SESSION["username"] ?></a></li>
+                                        <div class="img_user"><img src="./public/image/upload/user_image.png" alt="" class="img_user_item"></div>
+                                        <div class="box_list_user">
+                                            <ul class="list_user">
+                                                <li class="list_user_item"><a href="" class="list_user_item_link">Lịch sử mua hàng</a></li>
+                                                <li class="list_user_item"><a href="" class="list_user_item_link">Thông tin cá nhân</a></li>
+                                                <li class="list_user_item"><a href="?page=logout" class="list_user_item_link">Đăng xuất</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                            } else {
+                                ?><li class=""><a href="?page=register" class="list_link_page">Đăng ký</a></li>
+                                <li class=""><a href="?page=login" class="list_link_page">Đăng nhập</a></li><?php } ?>
                         </ul>
                     </div>
                 </div>
