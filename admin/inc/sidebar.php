@@ -16,8 +16,8 @@
                     </div>
                     <div class="collapse" id="1">
                         <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="list_product" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách sản phẩm</a></li>
-                            <li><a href="product_adđ" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Thêm mới</a></li>
+                            <li><a href="?page=list_product" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách sản phẩm</a></li>
+                            <li><a href="?page=add_product" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Thêm mới</a></li>
                         </ul>
                     </div>
                 </li>
@@ -29,9 +29,9 @@
                     </div>
                     <div class="collapse" id="2">
                         <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="list_bill" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách hóa đơn</a></li>
-                            <li><a href="list_buyer" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách khách hàng</a></li>
-                            
+                            <li><a href="?page=list_bill" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách hóa đơn</a></li>
+                            <li><a href="?page=list_buyer" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách khách hàng</a></li>
+
                         </ul>
                     </div>
                 </li>
@@ -43,9 +43,9 @@
                     </div>
                     <div class="collapse" id="3">
                         <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="list_blog" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách bài viết</a></li>
-                            <li><a href="add_blog" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Thêm bài viết</a></li>
-                           
+                            <li><a href="?page=list_blog" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách bài viết</a></li>
+                            <li><a href="?page=add_blog" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Thêm bài viết</a></li>
+
                         </ul>
                     </div>
                 </li>

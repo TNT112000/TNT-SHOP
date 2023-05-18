@@ -1,2 +1,2 @@
-<div class="col"></div>
+<div class=""></div>
 </div>

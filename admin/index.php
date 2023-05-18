@@ -13,7 +13,6 @@ require './inc/header.php';
 require './inc/sidebar.php';
 if(file_exists($path)){
     require "{$path}";
-
 }
 else{
     require "./page/404.php";

@@ -96,7 +96,8 @@ input:focus {
     height: 100%;
 }
 .content{
-    height: calc(100% - 115px);
+    display: flex;
+    
     
 }
 .footer{
@@ -109,4 +110,26 @@ input:focus {
 }
 .footer{
     color: white;
+}
+.title_add_product{
+    padding-bottom: 10px;
+    font-size: 25px;
+}
+.content_add_product{
+    padding-left: 30px;
+    padding-top: 30px;
+}
+.name_add_product{
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+.input_add_product{
+    width: 330px;
+    height: 25px;
+}
+.box_add_product{
+    padding: 15px 0 15px 0;
+}
+.ck{
+    height: 250px;
 }
