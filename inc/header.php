@@ -52,8 +52,8 @@
                         <div class="header_logo"><img class="img_logo" src="./public/image/upload/TNT.png" alt=""></div>
                         <div class="box_search">
                             <form action="" class="header_form_search" method="post">
-                                <input type="text" class="header_search" placeholder="Nhập từ khóa tìm kiếm tại đây">
-                                <button type="submit" class="header_form_btn">Tìm Kiếm</button>
+                                <input type="text" class="header_search" name="search_name_product" placeholder="Nhập từ khóa tìm kiếm tại đây">
+                                <button type="submit" name="search_header" class="header_form_btn">Tìm Kiếm</button>
                             </form>
                         </div>
                         <div class="box_header_contact">

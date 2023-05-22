@@ -9,3 +9,6 @@ a{
 .navbar-brand:hover{
     color: white;
 }
+.header_user:hover .box_list_user{
+    display: block;
+}

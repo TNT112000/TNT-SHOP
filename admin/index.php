@@ -1,22 +1,37 @@
+
 <?php
+session_start();
+require "../config/connect.php";
+require "../config/function.php";
 
-if(isset($_GET["page"])){
-    $page=$_GET["page"];
+if(!$_SESSION["is_login"]){
+    header('location: ../?page=home');
 }
-else{
-    $page="home";
+
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+} else {
+    $page = "list_product";
 }
 
 
-$path="./page/{$page}.php";
-require './inc/header.php';
-require './inc/sidebar.php';
-if(file_exists($path)){
+$path = "./page/{$page}.php";
+
+
+
+if (file_exists($path)) {
+    if($page=="logout" or  $page=="delete_product"){
+        require "$path";
+    }
+    else{
+    require './inc/header.php';
+    require './inc/sidebar.php';
     require "{$path}";
-}
-else{
+    require './inc/footer.php';
+    }
+} else {
     require "./page/404.php";
 }
-require './inc/footer.php';
+
 
 ?>

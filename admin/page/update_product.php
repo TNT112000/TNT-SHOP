@@ -1,15 +1,10 @@
-<?php
-
-require "./lib/add_product.php";
-?>
-
 <div class="content_add_product">
     <form enctype="multipart/form-data" action="" method="post">
         <div class="title_add_product">Thêm sản phẩm</div>
         <div class="error_product"> <?php echo show_error("add_product"); ?> </div>
         <div class="box_add_product">
             <div class="name_add_product">Tên sản phẩm</div>
-            <input type="text" name="name_product" class="input_add_product">
+            <input type="text" name="name_product" class="input_add_product" value="">
             <div class="error_product"> <?php echo show_error("name_product"); ?> </div>
         </div>
         <div class="box_add_product">

@@ -1,3 +1,8 @@
+<?php
+require "./lib/list_product.php"
+
+?>
+
 <div class="content">
     <div class="box_content row">
         <?php require './inc/sidebar.php' ?>
@@ -62,14 +67,25 @@
             <div class="list_product">
                 <div class="list_product_title">SẢN PHẨM</div>
                 <div class="row">
+
+                    <!-- DANH SÁCH SẢN PHẨM -->
+
+                    <?php 
+
+                    foreach($list_product as $item){
+                        $id=$item["id_sp"];
+                        $price = $item["giá_tiền"];
+                        $formatNumber = number_format($price,0, '.', '.');
+                    ?>
+                    
                     <div class="col-3">
                         <div class="list_product_box">
                             <div class="list_product_item">
-                                <a class="list_product_image">
-                                    <img src="./public/image/upload/TNT.png" class="list_product_image_item" alt="">
+                                <a href="?page=product_detail&id=<?php echo $id?>" class="list_product_image">
+                                    <img src="./public/image/upload/<?php  echo $item["ảnh_sản_phẩm"]?>" class="list_product_image_item" alt="">
                                 </a>
-                                <div class="list_product_name">Điện thoaị di động</div>
-                                <div class="list_product_rice">10.000.000đ</div>
+                                <div class="list_product_name"><?php  echo $item["tên_sản_phẩm"]?></div>
+                                <div class="list_product_rice"><?php  echo $formatNumber ?>đ</div>
                             </div>
                             <div class="list_product_btn">
                                 <a class="list_product_btn_cart">Thêm giỏ hàng</a>
@@ -77,66 +93,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div class="list_product_box">
-                            <div class="list_product_item">
-                                <a class="list_product_image">
-                                    <img src="./public/image/upload/TNT.png" class="list_product_image_item" alt="">
-                                </a>
-                                <div class="list_product_name">Điện thoaị di động</div>
-                                <div class="list_product_rice">10.000.000đ</div>
-                            </div>
-                            <div class="list_product_btn">
-                                <a class="list_product_btn_cart">Thêm giỏ hàng</a>
-                                <a class="list_product_btn_buy">Mua ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="list_product_box">
-                            <div class="list_product_item">
-                                <a class="list_product_image">
-                                    <img src="./public/image/upload/TNT.png" class="list_product_image_item" alt="">
-                                </a>
-                                <div class="list_product_name">Điện thoaị di động</div>
-                                <div class="list_product_rice">10.000.000đ</div>
-                            </div>
-                            <div class="list_product_btn">
-                                <a class="list_product_btn_cart">Thêm giỏ hàng</a>
-                                <a class="list_product_btn_buy">Mua ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="list_product_box">
-                            <div class="list_product_item">
-                                <a class="list_product_image">
-                                    <img src="./public/image/upload/TNT.png" class="list_product_image_item" alt="">
-                                </a>
-                                <div class="list_product_name">Điện thoaị di động</div>
-                                <div class="list_product_rice">10.000.000đ</div>
-                            </div>
-                            <div class="list_product_btn">
-                                <a class="list_product_btn_cart">Thêm giỏ hàng</a>
-                                <a class="list_product_btn_buy">Mua ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="list_product_box">
-                            <div class="list_product_item">
-                                <a class="list_product_image">
-                                    <img src="./public/image/upload/TNT.png" class="list_product_image_item" alt="">
-                                </a>
-                                <div class="list_product_name">Điện thoaị di động</div>
-                                <div class="list_product_rice">10.000.000đ</div>
-                            </div>
-                            <div class="list_product_btn">
-                                <a class="list_product_btn_cart">Thêm giỏ hàng</a>
-                                <a class="list_product_btn_buy">Mua ngay</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
+                    
                 </div>
             </div>
         </div>
