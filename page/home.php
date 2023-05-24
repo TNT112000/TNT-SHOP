@@ -88,8 +88,8 @@ require "./lib/list_product.php"
                                 <div class="list_product_rice"><?php  echo $formatNumber ?>đ</div>
                             </div>
                             <div class="list_product_btn">
-                                <a class="list_product_btn_cart">Thêm giỏ hàng</a>
-                                <a class="list_product_btn_buy">Mua ngay</a>
+                                <a href="?page=product_detail&id=<?php echo $id?>" class="list_product_btn_cart">Thêm giỏ hàng</a>
+                                <a href="?page=product_detail&id=<?php echo $id?>" class="list_product_btn_buy">Sản phẩm</a>
                             </div>
                         </div>
                     </div>

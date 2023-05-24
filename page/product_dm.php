@@ -1,23 +1,22 @@
 <?php
 
-require './lib/search_product.php';
+require './lib/product_dm.php';
 
 ?>
-
 <div class="content">
     <div class="box_content row">
         <?php require './inc/sidebar.php' ?>
         <div class="col-9 box_content_item">
 
             <div class="list_product">
-                <div class="list_product_title">SẢN PHẨM</div>
+                <div class="list_product_title"><?php echo $category ?></div>
                 <div class="row">
 
                     <!-- DANH SÁCH SẢN PHẨM -->
 
                     <?php
-                    if (isset($list_product_search)) {
-                        foreach ($list_product_search as $item) {
+                    if (isset($list_product_category)) {
+                        foreach ($list_product_category as $item) {
                             $id = $item["id_sp"];
                     ?>
 

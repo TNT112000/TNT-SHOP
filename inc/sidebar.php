@@ -3,7 +3,7 @@
         <div class="category_product_title">DANH MỤC SẢN PHẨM</div>
         <?php foreach ($list_category as $item_category) {
         ?>
-            <a class="category_product_item"><?php echo $item_category["tên_danh_mục"] ?></a>
+            <a href="?page=product_dm&category=<?php echo $item_category["tên_danh_mục"]?>" class="category_product_item"><?php echo $item_category["tên_danh_mục"] ?></a>
         <?php } ?>
     </div>
     <div class="product_outstanding">

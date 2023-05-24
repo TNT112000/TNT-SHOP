@@ -53,3 +53,6 @@ a{
 .header_user:hover .box_list_user{
     display: block;
 }
+.cart_product_btn:hover{
+    color: white;
+}

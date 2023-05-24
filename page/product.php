@@ -1,5 +1,8 @@
 
+<?php
+require "./lib/list_product.php"
 
+?>
 <div class="content">
     <div class="box_content row">
         <?php require './inc/sidebar.php' ?>
@@ -11,13 +14,7 @@
 
                     <!-- DANH SÁCH SẢN PHẨM -->
 
-                    <?php $sql = "SELECT * FROM sản_phẩm ";
-                    $result = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $list_product[] = $row;
-                        }
-                    }
+                    <?php 
 
                     foreach ($list_product as $item) {
                         $id=$item["id_sp"];

@@ -1,8 +1,9 @@
 <?php
 session_start();
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-require './lib/search.php';
 require './config/connect.php';
+
+
 require './lib/category_product.php';
 require "./lib/login_hd.php";
 require "./lib/register_hd.php";

@@ -16,7 +16,7 @@
 <body>
     <div class="main">
         <img src="https://img.lovepik.com/photo/50042/5113.jpg_wh300.jpg" alt="" class="background_img_login">
-        <div class="content">
+        <div class="content_1">
             <form action="" method="post" class="form_content_login">
                 <div class="form_content_title">
                     <p class="title_login">Đăng nhập để sử dụng chức năng</p>
