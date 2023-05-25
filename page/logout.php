@@ -1,7 +1,7 @@
 <?php
-unset($_SESSION["username"]);
-unset($_SESSION["is_login"]);
+session_unset();
 navigation();
+?>
 
 
 

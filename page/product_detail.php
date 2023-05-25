@@ -1,6 +1,5 @@
 <?php
 require "./lib/product_detail.php";
-require "./lib/add_cart.php";
 ?>
 
 <div class="content">

@@ -19,6 +19,9 @@
                             <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="?page=list_product" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách sản phẩm</a></li>
                                 <li><a href="?page=add_product" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Thêm mới</a></li>
+                                <li><a href="?page=add_product_nb" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Sản phẩm nổi bật</a></li>
+                                
+
                             </ul>
                         </div>
                     </li>
@@ -50,34 +53,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="mb-1">
-                        <div class="btn_sidebar_admin"><button class=" btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#4" aria-expanded="false">
-                                <i class="icon_sidebar_admin fa-solid fa-sliders"></i>
-                                <p class="title_sidebar_admin">Slider</p>
-                            </button>
-                        </div>
-                        <div class="collapse" id="4">
-                            <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Overview</a></li>
-                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Weekly</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <div class="btn_sidebar_admin"><button class=" btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#5" aria-expanded="false">
-                                <i class="icon_sidebar_admin fa-brands fa-medium"></i>
-                                <p class="title_sidebar_admin">Quảng cáo</p>
-                            </button>
-                        </div>
-                        <div class="collapse" id="5">
-                            <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Overview</a></li>
-                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Weekly</a></li>
-                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Monthly</a></li>
-                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Annually</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

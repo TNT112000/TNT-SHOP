@@ -1,5 +1,7 @@
 <?php
 
+
+
 if(isset($_GET["id"])){
     $id=$_GET["id"];
     $sql="SELECT * FROM sản_phẩm where id_sp='$id'";
@@ -10,4 +12,3 @@ if(isset($_GET["id"])){
         }
     }
 }
-?>

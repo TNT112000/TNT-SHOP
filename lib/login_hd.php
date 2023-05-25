@@ -26,11 +26,14 @@ if (isset($_POST["btn_login"])) {
                 $row = mysqli_fetch_assoc($result_1);
                 $id_user = $row["id_tk"];
                 $level = $row["cấp_bậc"];
+                $_SESSION['level']=$level;
                 $_SESSION["id"] = $id_user;
                 if ($level == 0) {
+                  
                     header('Location:?page=home');
                 }
                 if($level == 1){
+                  
                     header('location:./admin');
                 }
             } else {
