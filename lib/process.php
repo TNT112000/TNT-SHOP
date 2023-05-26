@@ -24,10 +24,13 @@ if(mysqli_num_rows($result_2)>0){
         $list_cart_product[]=$row;
     }
 }
-$total_all=0;
+$total_num=0;
 foreach($list_cart_product as $item){
-    $total_all+=$item['tổng_tiền'];
+    $total_num+=$item['tổng_tiền'];
 }
+$total_all = number_format($total_num, 0, '.', '.');
+$total = number_format($total, 0, '.', '.');
+
 
 $data=array(
     'total' => $total,

@@ -21,7 +21,7 @@ require "../lib/list_product.php"
                 <tr>
 
                     <th class="list_product_item">STT</th>
-                    <th class="list_product_item">Mã sản phẩm</th>
+                    <th class="list_product_item">Tên bài viết</th>
                     <th class="list_product_item">Tên</th>
 
                     <th class="list_product_item">Danh mục</th>
@@ -42,7 +42,7 @@ require "../lib/list_product.php"
                 $stt = 1;
                 foreach ($list_product as $item) {
                     $price = $item["giá_tiền"];
-                        $formatNumber = number_format($price,0, '.', '.');
+                    $formatNumber = number_format($price, 0, '.', '.');
                     $product['url_update'] = "?page=update_product&id={$item['id_sp']}";
                     $product['url_delete'] = "?page=delete_product&id={$item['id_sp']}";
                 ?>

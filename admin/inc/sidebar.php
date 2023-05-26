@@ -10,7 +10,7 @@
 
                     <li class="mb-1">
                         <div class="btn_sidebar_admin">
-                            <button class=" btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#1" aria-expanded="true">
+                            <button class=" btn click_sidebar btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#1" aria-expanded="true">
                                 <i class="icon_sidebar_admin fa-brands fa-product-hunt"></i>
                                 <p class="title_sidebar_admin">Sản phẩm</p>
                             </button>
@@ -26,7 +26,7 @@
                         </div>
                     </li>
                     <li class="mb-1">
-                        <div class="btn_sidebar_admin"><button class=" btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#2" aria-expanded="false">
+                        <div class="btn_sidebar_admin"><button class=" btn click_sidebar btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#2" aria-expanded="false">
                                 <i class="icon_sidebar_admin fa-solid fa-coins"></i>
                                 <p class="title_sidebar_admin">Bán hàng</p>
                             </button>
@@ -34,13 +34,13 @@
                         <div class="collapse" id="2">
                             <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="?page=list_bill" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách hóa đơn</a></li>
-                                <li><a href="?page=list_buyer" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách khách hàng</a></li>
+                               
 
                             </ul>
                         </div>
                     </li>
                     <li class="mb-1">
-                        <div class="btn_sidebar_admin"><button class=" btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#3" aria-expanded="false">
+                        <div class="btn_sidebar_admin"><button class=" btn click_sidebar btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#3" aria-expanded="false">
                                 <i class="icon_sidebar_admin fa-solid fa-pen-to-square"></i>
                                 <p class="title_sidebar_admin">Blog</p>
                             </button>
@@ -53,7 +53,18 @@
                             </ul>
                         </div>
                     </li>
-                    
+                    <li class="mb-1">
+                        <div class="btn_sidebar_admin"><button class=" btn click_sidebar btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#2" aria-expanded="false">
+                                <i class="icon_sidebar_admin fa-solid fa-coins"></i>
+                                <p class="title_sidebar_admin">Giới thiệu</p>
+                            </button>
+                        </div>
+                        <div class="collapse" id="2">
+                            <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="?page=introduce" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Giới thiệu</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

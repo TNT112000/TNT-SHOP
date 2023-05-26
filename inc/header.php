@@ -27,7 +27,7 @@
                             <li class=""><a href="?page=product" class="list_link_page">Sản phẩm</a></li>
                             <li class=""><a href="?page=blog" class="list_link_page">Blog</a></li>
                             <li class=""><a href="?page=introduce" class="list_link_page">Giới thiệu</a></li>
-                            <li class=""><a href="?page=contact" class="list_link_page">Liên hệ</a></li>
+                            
                             <?php if (isset($_SESSION["is_login"])) {
                                 if ($_SESSION["is_login"]) { ?><div class="header_user">
                                         <li class=""><a class="list_link_page"><?php echo $_SESSION["username"] ?></a></li>

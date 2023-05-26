@@ -17,6 +17,8 @@ require './lib/product_dm.php';
                     <?php
                     if (isset($list_product_category)) {
                         foreach ($list_product_category as $item) {
+                            $price = $item["giá_tiền"];
+                            $formatNumber = number_format($price,0, '.', '.');
                             $id = $item["id_sp"];
                     ?>
 
@@ -27,11 +29,11 @@ require './lib/product_dm.php';
                                             <img src="./public/image/upload/<?php echo $item["ảnh_sản_phẩm"] ?>" class="list_product_image_item" alt="">
                                         </a>
                                         <div class="list_product_name"><?php echo $item["tên_sản_phẩm"] ?></div>
-                                        <div class="list_product_rice"><?php echo $item["giá_tiền"] ?></div>
+                                        <div class="list_product_rice"><?php echo $formatNumber ?>đ</div>
                                     </div>
                                     <div class="list_product_btn">
-                                        <a class="list_product_btn_cart">Thêm giỏ hàng</a>
-                                        <a class="list_product_btn_buy">Mua ngay</a>
+                                        <a href="?page=product_detail&id=<?php echo $id ?>" class="list_product_btn_cart">Thêm giỏ hàng</a>
+                                        <a href="?page=product_detail&id=<?php echo $id ?>" class="list_product_btn_buy">Sản phẩm</a>
                                     </div>
                                 </div>
                             </div>

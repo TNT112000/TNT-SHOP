@@ -3,6 +3,7 @@ session_start();
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 require './config/connect.php';
+require './lib/product_nb.php';
 require './lib/cart.php';
 require "./lib/add_cart.php";
 require './lib/category_product.php';
