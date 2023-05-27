@@ -73,7 +73,7 @@ class WrappedHttpHandler
         $fn = $this->httpHandler;
         $options = $command['@http'] ?: [];
         $stats = [];
-        if ($this->collectStats || !empty($options['collect_stats'])) {
+        if ($this->collectStats) {
             $options['http_stats_receiver'] = static function (
                 array $transferStats
             ) use (&$stats) {
@@ -84,7 +84,7 @@ class WrappedHttpHandler
                 . ' receiver to Aws\WrappedHttpHandler is not supported.');
         }
 
-        return Promise\Create::promiseFor($fn($request, $options))
+        return Promise\promise_for($fn($request, $options))
             ->then(
                 function (
                     ResponseInterface $res
@@ -171,11 +171,7 @@ class WrappedHttpHandler
             $parts = ['response' => null];
         } else {
             try {
-                $parts = call_user_func(
-                    $this->errorParser,
-                    $err['response'],
-                    $command
-                );
+                $parts = call_user_func($this->errorParser, $err['response']);
                 $serviceError .= " {$parts['code']} ({$parts['type']}): "
                     . "{$parts['message']} - " . $err['response']->getBody();
             } catch (ParserException $e) {

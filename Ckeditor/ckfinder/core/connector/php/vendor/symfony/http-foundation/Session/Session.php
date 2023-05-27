@@ -11,45 +11,38 @@
 
 namespace Symfony\Component\HttpFoundation\Session;
 
+use Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
-use Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
-
-// Help opcache.preload discover always-needed symbols
-class_exists(AttributeBag::class);
-class_exists(FlashBag::class);
-class_exists(SessionBagProxy::class);
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Drak <drak@zikula.org>
- *
- * @implements \IteratorAggregate<string, mixed>
  */
 class Session implements SessionInterface, \IteratorAggregate, \Countable
 {
     protected $storage;
 
-    private string $flashName;
-    private string $attributeName;
-    private array $data = [];
-    private int $usageIndex = 0;
-    private ?\Closure $usageReporter;
+    private $flashName;
+    private $attributeName;
 
-    public function __construct(SessionStorageInterface $storage = null, AttributeBagInterface $attributes = null, FlashBagInterface $flashes = null, callable $usageReporter = null)
+    /**
+     * @param SessionStorageInterface $storage    A SessionStorageInterface instance
+     * @param AttributeBagInterface   $attributes An AttributeBagInterface instance, (defaults null for default AttributeBag)
+     * @param FlashBagInterface       $flashes    A FlashBagInterface instance (defaults null for default FlashBag)
+     */
+    public function __construct(SessionStorageInterface $storage = null, AttributeBagInterface $attributes = null, FlashBagInterface $flashes = null)
     {
-        $this->storage = $storage ?? new NativeSessionStorage();
-        $this->usageReporter = null === $usageReporter ? null : $usageReporter(...);
+        $this->storage = $storage ?: new NativeSessionStorage();
 
-        $attributes ??= new AttributeBag();
+        $attributes = $attributes ?: new AttributeBag();
         $this->attributeName = $attributes->getName();
         $this->registerBag($attributes);
 
-        $flashes ??= new FlashBag();
+        $flashes = $flashes ?: new FlashBag();
         $this->flashName = $flashes->getName();
         $this->registerBag($flashes);
     }
@@ -57,7 +50,7 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     /**
      * {@inheritdoc}
      */
-    public function start(): bool
+    public function start()
     {
         return $this->storage->start();
     }
@@ -65,33 +58,33 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     /**
      * {@inheritdoc}
      */
-    public function has(string $name): bool
+    public function has($name)
     {
-        return $this->getAttributeBag()->has($name);
+        return $this->storage->getBag($this->attributeName)->has($name);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function get(string $name, mixed $default = null): mixed
+    public function get($name, $default = null)
     {
-        return $this->getAttributeBag()->get($name, $default);
+        return $this->storage->getBag($this->attributeName)->get($name, $default);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function set(string $name, mixed $value)
+    public function set($name, $value)
     {
-        $this->getAttributeBag()->set($name, $value);
+        $this->storage->getBag($this->attributeName)->set($name, $value);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function all(): array
+    public function all()
     {
-        return $this->getAttributeBag()->all();
+        return $this->storage->getBag($this->attributeName)->all();
     }
 
     /**
@@ -99,15 +92,15 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      */
     public function replace(array $attributes)
     {
-        $this->getAttributeBag()->replace($attributes);
+        $this->storage->getBag($this->attributeName)->replace($attributes);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function remove(string $name): mixed
+    public function remove($name)
     {
-        return $this->getAttributeBag()->remove($name);
+        return $this->storage->getBag($this->attributeName)->remove($name);
     }
 
     /**
@@ -115,13 +108,13 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      */
     public function clear()
     {
-        $this->getAttributeBag()->clear();
+        $this->storage->getBag($this->attributeName)->clear();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function isStarted(): bool
+    public function isStarted()
     {
         return $this->storage->isStarted();
     }
@@ -129,50 +122,27 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     /**
      * Returns an iterator for attributes.
      *
-     * @return \ArrayIterator<string, mixed>
+     * @return \ArrayIterator An \ArrayIterator instance
      */
-    public function getIterator(): \ArrayIterator
+    public function getIterator()
     {
-        return new \ArrayIterator($this->getAttributeBag()->all());
+        return new \ArrayIterator($this->storage->getBag($this->attributeName)->all());
     }
 
     /**
      * Returns the number of attributes.
+     *
+     * @return int The number of attributes
      */
-    public function count(): int
+    public function count()
     {
-        return \count($this->getAttributeBag()->all());
-    }
-
-    public function &getUsageIndex(): int
-    {
-        return $this->usageIndex;
-    }
-
-    /**
-     * @internal
-     */
-    public function isEmpty(): bool
-    {
-        if ($this->isStarted()) {
-            ++$this->usageIndex;
-            if ($this->usageReporter && 0 <= $this->usageIndex) {
-                ($this->usageReporter)();
-            }
-        }
-        foreach ($this->data as &$data) {
-            if (!empty($data)) {
-                return false;
-            }
-        }
-
-        return true;
+        return count($this->storage->getBag($this->attributeName)->all());
     }
 
     /**
      * {@inheritdoc}
      */
-    public function invalidate(int $lifetime = null): bool
+    public function invalidate($lifetime = null)
     {
         $this->storage->clear();
 
@@ -182,7 +152,7 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     /**
      * {@inheritdoc}
      */
-    public function migrate(bool $destroy = false, int $lifetime = null): bool
+    public function migrate($destroy = false, $lifetime = null)
     {
         return $this->storage->regenerate($destroy, $lifetime);
     }
@@ -198,7 +168,7 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     /**
      * {@inheritdoc}
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->storage->getId();
     }
@@ -206,17 +176,15 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     /**
      * {@inheritdoc}
      */
-    public function setId(string $id)
+    public function setId($id)
     {
-        if ($this->storage->getId() !== $id) {
-            $this->storage->setId($id);
-        }
+        $this->storage->setId($id);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->storage->getName();
     }
@@ -224,7 +192,7 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     /**
      * {@inheritdoc}
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->storage->setName($name);
     }
@@ -232,13 +200,8 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     /**
      * {@inheritdoc}
      */
-    public function getMetadataBag(): MetadataBag
+    public function getMetadataBag()
     {
-        ++$this->usageIndex;
-        if ($this->usageReporter && 0 <= $this->usageIndex) {
-            ($this->usageReporter)();
-        }
-
         return $this->storage->getMetadataBag();
     }
 
@@ -247,34 +210,24 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      */
     public function registerBag(SessionBagInterface $bag)
     {
-        $this->storage->registerBag(new SessionBagProxy($bag, $this->data, $this->usageIndex, $this->usageReporter));
+        $this->storage->registerBag($bag);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBag(string $name): SessionBagInterface
+    public function getBag($name)
     {
-        $bag = $this->storage->getBag($name);
-
-        return method_exists($bag, 'getBag') ? $bag->getBag() : $bag;
+        return $this->storage->getBag($name);
     }
 
     /**
      * Gets the flashbag interface.
+     *
+     * @return FlashBagInterface
      */
-    public function getFlashBag(): FlashBagInterface
+    public function getFlashBag()
     {
         return $this->getBag($this->flashName);
-    }
-
-    /**
-     * Gets the attributebag interface.
-     *
-     * Note that this method was added to help with IDE autocompletion.
-     */
-    private function getAttributeBag(): AttributeBagInterface
-    {
-        return $this->getBag($this->attributeName);
     }
 }

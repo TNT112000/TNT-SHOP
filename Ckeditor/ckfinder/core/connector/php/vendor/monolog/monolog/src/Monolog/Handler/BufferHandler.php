@@ -12,8 +12,6 @@
 namespace Monolog\Handler;
 
 use Monolog\Logger;
-use Monolog\ResettableInterface;
-use Monolog\Formatter\FormatterInterface;
 
 /**
  * Buffers all records until closing the handler and then pass them as batch.
@@ -115,34 +113,5 @@ class BufferHandler extends AbstractHandler
     {
         $this->bufferSize = 0;
         $this->buffer = array();
-    }
-
-    public function reset()
-    {
-        $this->flush();
-
-        parent::reset();
-
-        if ($this->handler instanceof ResettableInterface) {
-            $this->handler->reset();
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setFormatter(FormatterInterface $formatter)
-    {
-        $this->handler->setFormatter($formatter);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getFormatter()
-    {
-        return $this->handler->getFormatter();
     }
 }

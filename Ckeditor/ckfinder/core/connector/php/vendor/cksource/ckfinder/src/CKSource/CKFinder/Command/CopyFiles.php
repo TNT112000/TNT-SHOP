@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -23,7 +23,6 @@ use CKSource\CKFinder\Exception\InvalidRequestException;
 use CKSource\CKFinder\Exception\UnauthorizedException;
 use CKSource\CKFinder\Filesystem\File\CopiedFile;
 use CKSource\CKFinder\ResourceType\ResourceTypeFactory;
-use League\Flysystem\FilesystemException;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,25 +30,19 @@ class CopyFiles extends CommandAbstract
 {
     protected $requestMethod = Request::METHOD_POST;
 
-    protected $requires = [
+    protected $requires = array(
         Permission::FILE_RENAME,
         Permission::FILE_CREATE,
-        Permission::FILE_DELETE,
-    ];
+        Permission::FILE_DELETE
+    );
 
-    /**
-     * @throws InvalidRequestException
-     * @throws UnauthorizedException
-     * @throws \Exception
-     * @throws FilesystemException
-     */
-    public function execute(Request $request, ResourceTypeFactory $resourceTypeFactory, Acl $acl, EventDispatcher $dispatcher): array
+    public function execute(Request $request, ResourceTypeFactory $resourceTypeFactory, Acl $acl, EventDispatcher $dispatcher)
     {
-        $copiedFiles = $request->request->all('files');
+        $copiedFiles = (array) $request->request->get('files');
 
         $copied = 0;
 
-        $errors = [];
+        $errors = array();
 
         // Initial validation
         foreach ($copiedFiles as $arr) {
@@ -67,25 +60,26 @@ class CopyFiles extends CommandAbstract
                 continue;
             }
 
-            $name = $arr['name'];
-            $type = $arr['type'];
+            $name   = $arr['name'];
+            $type   = $arr['type'];
             $folder = $arr['folder'];
 
             $resourceType = $resourceTypeFactory->getResourceType($type);
 
             $copiedFile = new CopiedFile($name, $folder, $resourceType, $this->app);
 
-            $options = $arr['options'] ?? '';
+            $options = isset($arr['options']) ? $arr['options'] : '';
 
             $copiedFile->setCopyOptions($options);
 
+
             if ($copiedFile->isValid()) {
                 $copyFileEvent = new CopyFileEvent($this->app, $copiedFile);
-                $dispatcher->dispatch($copyFileEvent, CKFinderEvent::COPY_FILE);
+                $dispatcher->dispatch(CKFinderEvent::COPY_FILE, $copyFileEvent);
 
                 if (!$copyFileEvent->isPropagationStopped()) {
                     if ($copiedFile->doCopy()) {
-                        ++$copied;
+                        $copied++;
                     }
                 }
             }
@@ -93,13 +87,13 @@ class CopyFiles extends CommandAbstract
             $errors = array_merge($errors, $copiedFile->getErrors());
         }
 
-        $data = ['copied' => $copied];
+        $data = array('copied' => $copied);
 
         if (!empty($errors)) {
-            $data['error'] = [
+            $data['error'] = array(
                 'number' => Error::COPY_FAILED,
-                'errors' => $errors,
-            ];
+                'errors' => $errors
+            );
         }
 
         return $data;

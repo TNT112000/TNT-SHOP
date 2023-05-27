@@ -11,12 +11,7 @@
 
 namespace Symfony\Component\HttpKernel\DataCollector;
 
-use Symfony\Component\VarDumper\Caster\CutStub;
-use Symfony\Component\VarDumper\Caster\ReflectionCaster;
-use Symfony\Component\VarDumper\Cloner\ClonerInterface;
-use Symfony\Component\VarDumper\Cloner\Data;
-use Symfony\Component\VarDumper\Cloner\Stub;
-use Symfony\Component\VarDumper\Cloner\VarCloner;
+use Symfony\Component\HttpKernel\DataCollector\Util\ValueExporter;
 
 /**
  * DataCollector.
@@ -26,77 +21,38 @@ use Symfony\Component\VarDumper\Cloner\VarCloner;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Bernhard Schussek <bschussek@symfony.com>
  */
-abstract class DataCollector implements DataCollectorInterface
+abstract class DataCollector implements DataCollectorInterface, \Serializable
 {
+    protected $data = array();
+
     /**
-     * @var array|Data
+     * @var ValueExporter
      */
-    protected $data = [];
+    private $valueExporter;
 
-    private ClonerInterface $cloner;
+    public function serialize()
+    {
+        return serialize($this->data);
+    }
+
+    public function unserialize($data)
+    {
+        $this->data = unserialize($data);
+    }
 
     /**
-     * Converts the variable into a serializable Data instance.
+     * Converts a PHP variable to a string.
      *
-     * This array can be displayed in the template using
-     * the VarDumper component.
+     * @param mixed $var A PHP variable
+     *
+     * @return string The string representation of the variable
      */
-    protected function cloneVar(mixed $var): Data
+    protected function varToString($var)
     {
-        if ($var instanceof Data) {
-            return $var;
-        }
-        if (!isset($this->cloner)) {
-            $this->cloner = new VarCloner();
-            $this->cloner->setMaxItems(-1);
-            $this->cloner->addCasters($this->getCasters());
+        if (null === $this->valueExporter) {
+            $this->valueExporter = new ValueExporter();
         }
 
-        return $this->cloner->cloneVar($var);
-    }
-
-    /**
-     * @return callable[] The casters to add to the cloner
-     */
-    protected function getCasters()
-    {
-        $casters = [
-            '*' => function ($v, array $a, Stub $s, $isNested) {
-                if (!$v instanceof Stub) {
-                    foreach ($a as $k => $v) {
-                        if (\is_object($v) && !$v instanceof \DateTimeInterface && !$v instanceof Stub) {
-                            $a[$k] = new CutStub($v);
-                        }
-                    }
-                }
-
-                return $a;
-            },
-        ] + ReflectionCaster::UNSET_CLOSURE_FILE_INFO;
-
-        return $casters;
-    }
-
-    public function __sleep(): array
-    {
-        return ['data'];
-    }
-
-    public function __wakeup()
-    {
-    }
-
-    /**
-     * @internal to prevent implementing \Serializable
-     */
-    final protected function serialize()
-    {
-    }
-
-    /**
-     * @internal to prevent implementing \Serializable
-     */
-    final protected function unserialize(string $data)
-    {
+        return $this->valueExporter->exportValue($var);
     }
 }

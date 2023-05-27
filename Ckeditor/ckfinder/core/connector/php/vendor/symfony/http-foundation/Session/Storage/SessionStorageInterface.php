@@ -24,34 +24,46 @@ interface SessionStorageInterface
     /**
      * Starts the session.
      *
+     * @return bool True if started
+     *
      * @throws \RuntimeException if something goes wrong starting the session
      */
-    public function start(): bool;
+    public function start();
 
     /**
      * Checks if the session is started.
+     *
+     * @return bool True if started, false otherwise
      */
-    public function isStarted(): bool;
+    public function isStarted();
 
     /**
      * Returns the session ID.
+     *
+     * @return string The session ID or empty
      */
-    public function getId(): string;
+    public function getId();
 
     /**
      * Sets the session ID.
+     *
+     * @param string $id
      */
-    public function setId(string $id);
+    public function setId($id);
 
     /**
      * Returns the session name.
+     *
+     * @return mixed The session name
      */
-    public function getName(): string;
+    public function getName();
 
     /**
      * Sets the session name.
+     *
+     * @param string $name
      */
-    public function setName(string $name);
+    public function setName($name);
 
     /**
      * Regenerates id that represents this storage.
@@ -65,7 +77,7 @@ interface SessionStorageInterface
      * only delete the session data from persistent storage.
      *
      * Care: When regenerating the session ID no locking is involved in PHP's
-     * session design. See https://bugs.php.net/61470 for a discussion.
+     * session design. See https://bugs.php.net/bug.php?id=61470 for a discussion.
      * So you must make sure the regenerated session is saved BEFORE sending the
      * headers with the new ID. Symfony's HttpKernel offers a listener for this.
      * See Symfony\Component\HttpKernel\EventListener\SaveSessionListener.
@@ -78,9 +90,11 @@ interface SessionStorageInterface
      *                       to expire with browser session. Time is in seconds, and is
      *                       not a Unix timestamp.
      *
+     * @return bool True if session regenerated, false if error
+     *
      * @throws \RuntimeException If an error occurs while regenerating this storage
      */
-    public function regenerate(bool $destroy = false, int $lifetime = null): bool;
+    public function regenerate($destroy = false, $lifetime = null);
 
     /**
      * Force the session to be saved and closed.
@@ -103,14 +117,21 @@ interface SessionStorageInterface
     /**
      * Gets a SessionBagInterface by name.
      *
+     * @param string $name
+     *
+     * @return SessionBagInterface
+     *
      * @throws \InvalidArgumentException If the bag does not exist
      */
-    public function getBag(string $name): SessionBagInterface;
+    public function getBag($name);
 
     /**
      * Registers a SessionBagInterface for use.
      */
     public function registerBag(SessionBagInterface $bag);
 
-    public function getMetadataBag(): MetadataBag;
+    /**
+     * @return MetadataBag
+     */
+    public function getMetadataBag();
 }

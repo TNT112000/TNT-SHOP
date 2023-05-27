@@ -11,9 +11,8 @@
 
 namespace Symfony\Component\HttpKernel\DependencyInjection;
 
-use Psr\Container\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpKernel\Controller\ControllerReference;
 use Symfony\Component\HttpKernel\Fragment\FragmentHandler;
 
 /**
@@ -23,28 +22,36 @@ use Symfony\Component\HttpKernel\Fragment\FragmentHandler;
  */
 class LazyLoadingFragmentHandler extends FragmentHandler
 {
-    private ContainerInterface $container;
+    private $container;
+    private $rendererIds = array();
 
-    /**
-     * @var array<string, bool>
-     */
-    private array $initialized = [];
-
-    public function __construct(ContainerInterface $container, RequestStack $requestStack, bool $debug = false)
+    public function __construct(ContainerInterface $container, $debug = false, RequestStack $requestStack = null)
     {
         $this->container = $container;
 
-        parent::__construct($requestStack, [], $debug);
+        parent::__construct(array(), $debug, $requestStack);
+    }
+
+    /**
+     * Adds a service as a fragment renderer.
+     *
+     * @param string $name     The service name
+     * @param string $renderer The render service id
+     */
+    public function addRendererService($name, $renderer)
+    {
+        $this->rendererIds[$name] = $renderer;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function render(string|ControllerReference $uri, string $renderer = 'inline', array $options = []): ?string
+    public function render($uri, $renderer = 'inline', array $options = array())
     {
-        if (!isset($this->initialized[$renderer]) && $this->container->has($renderer)) {
-            $this->addRenderer($this->container->get($renderer));
-            $this->initialized[$renderer] = true;
+        if (isset($this->rendererIds[$renderer])) {
+            $this->addRenderer($this->container->get($this->rendererIds[$renderer]));
+
+            unset($this->rendererIds[$renderer]);
         }
 
         return parent::render($uri, $renderer, $options);

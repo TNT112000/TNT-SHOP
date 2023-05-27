@@ -26,7 +26,7 @@ require './lib/add_blog.php';
             <div class="name_add_product">Nội dung</div>
             <textarea name="detail_blog" id="editor1"></textarea>
             <script>
-                CKEDITOR.replace( 'editor1' );
+                CKEDITOR.replace('editor1');
             </script>
             <div class="error_product"> <?php echo show_error("detail_blog") ?></div>
         </div>

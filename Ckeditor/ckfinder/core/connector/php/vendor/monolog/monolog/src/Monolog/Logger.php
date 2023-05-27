@@ -25,7 +25,7 @@ use Exception;
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */
-class Logger implements LoggerInterface, ResettableInterface
+class Logger implements LoggerInterface
 {
     /**
      * Detailed debug information
@@ -321,7 +321,7 @@ class Logger implements LoggerInterface, ResettableInterface
         if ($this->microsecondTimestamps && PHP_VERSION_ID < 70100) {
             $ts = \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true)), static::$timezone);
         } else {
-            $ts = new \DateTime('now', static::$timezone);
+            $ts = new \DateTime(null, static::$timezone);
         }
         $ts->setTimezone(static::$timezone);
 
@@ -352,50 +352,6 @@ class Logger implements LoggerInterface, ResettableInterface
         }
 
         return true;
-    }
-
-    /**
-     * Ends a log cycle and frees all resources used by handlers.
-     *
-     * Closing a Handler means flushing all buffers and freeing any open resources/handles.
-     * Handlers that have been closed should be able to accept log records again and re-open
-     * themselves on demand, but this may not always be possible depending on implementation.
-     *
-     * This is useful at the end of a request and will be called automatically on every handler
-     * when they get destructed.
-     */
-    public function close()
-    {
-        foreach ($this->handlers as $handler) {
-            if (method_exists($handler, 'close')) {
-                $handler->close();
-            }
-        }
-    }
-
-    /**
-     * Ends a log cycle and resets all handlers and processors to their initial state.
-     *
-     * Resetting a Handler or a Processor means flushing/cleaning all buffers, resetting internal
-     * state, and getting it back to a state in which it can receive log records again.
-     *
-     * This is useful in case you want to avoid logs leaking between two requests or jobs when you
-     * have a long running process like a worker or an application server serving multiple requests
-     * in one process.
-     */
-    public function reset()
-    {
-        foreach ($this->handlers as $handler) {
-            if ($handler instanceof ResettableInterface) {
-                $handler->reset();
-            }
-        }
-
-        foreach ($this->processors as $processor) {
-            if ($processor instanceof ResettableInterface) {
-                $processor->reset();
-            }
-        }
     }
 
     /**
@@ -522,18 +478,13 @@ class Logger implements LoggerInterface, ResettableInterface
     /**
      * Converts PSR-3 levels to Monolog ones if necessary
      *
-     * @param string|int $level Level number (monolog) or name (PSR-3)
+     * @param string|int Level number (monolog) or name (PSR-3)
      * @return int
      */
     public static function toMonologLevel($level)
     {
-        if (is_string($level)) {
-            // Contains chars of all log levels and avoids using strtoupper() which may have
-            // strange results depending on locale (for example, "i" will become "İ")
-            $upper = strtr($level, 'abcdefgilmnortuwy', 'ABCDEFGILMNORTUWY');
-            if (defined(__CLASS__.'::'.$upper)) {
-                return constant(__CLASS__ . '::' . $upper);
-            }
+        if (is_string($level) && defined(__CLASS__.'::'.strtoupper($level))) {
+            return constant(__CLASS__.'::'.strtoupper($level));
         }
 
         return $level;

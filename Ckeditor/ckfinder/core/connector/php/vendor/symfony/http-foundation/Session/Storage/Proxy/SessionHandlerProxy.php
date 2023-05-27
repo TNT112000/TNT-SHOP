@@ -11,66 +11,78 @@
 
 namespace Symfony\Component\HttpFoundation\Session\Storage\Proxy;
 
-use Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler;
-
 /**
  * @author Drak <drak@zikula.org>
  */
-class SessionHandlerProxy extends AbstractProxy implements \SessionHandlerInterface, \SessionUpdateTimestampHandlerInterface
+class SessionHandlerProxy extends AbstractProxy implements \SessionHandlerInterface
 {
     protected $handler;
 
+    /**
+     * @param \SessionHandlerInterface $handler
+     */
     public function __construct(\SessionHandlerInterface $handler)
     {
         $this->handler = $handler;
-        $this->wrapper = $handler instanceof \SessionHandler;
-        $this->saveHandlerName = $this->wrapper || ($handler instanceof StrictSessionHandler && $handler->isWrapper()) ? \ini_get('session.save_handler') : 'user';
-    }
-
-    public function getHandler(): \SessionHandlerInterface
-    {
-        return $this->handler;
+        $this->wrapper = ($handler instanceof \SessionHandler);
+        $this->saveHandlerName = $this->wrapper ? ini_get('session.save_handler') : 'user';
     }
 
     // \SessionHandlerInterface
 
-    public function open(string $savePath, string $sessionName): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function open($savePath, $sessionName)
     {
-        return $this->handler->open($savePath, $sessionName);
+        $return = (bool) $this->handler->open($savePath, $sessionName);
+
+        if (true === $return) {
+            $this->active = true;
+        }
+
+        return $return;
     }
 
-    public function close(): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function close()
     {
-        return $this->handler->close();
+        $this->active = false;
+
+        return (bool) $this->handler->close();
     }
 
-    public function read(string $sessionId): string|false
+    /**
+     * {@inheritdoc}
+     */
+    public function read($sessionId)
     {
-        return $this->handler->read($sessionId);
+        return (string) $this->handler->read($sessionId);
     }
 
-    public function write(string $sessionId, string $data): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function write($sessionId, $data)
     {
-        return $this->handler->write($sessionId, $data);
+        return (bool) $this->handler->write($sessionId, $data);
     }
 
-    public function destroy(string $sessionId): bool
+    /**
+     * {@inheritdoc}
+     */
+    public function destroy($sessionId)
     {
-        return $this->handler->destroy($sessionId);
+        return (bool) $this->handler->destroy($sessionId);
     }
 
-    public function gc(int $maxlifetime): int|false
+    /**
+     * {@inheritdoc}
+     */
+    public function gc($maxlifetime)
     {
-        return $this->handler->gc($maxlifetime);
-    }
-
-    public function validateId(string $sessionId): bool
-    {
-        return !$this->handler instanceof \SessionUpdateTimestampHandlerInterface || $this->handler->validateId($sessionId);
-    }
-
-    public function updateTimestamp(string $sessionId, string $data): bool
-    {
-        return $this->handler instanceof \SessionUpdateTimestampHandlerInterface ? $this->handler->updateTimestamp($sessionId, $data) : $this->write($sessionId, $data);
+        return (bool) $this->handler->gc($maxlifetime);
     }
 }

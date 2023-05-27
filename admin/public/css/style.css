@@ -1,5 +1,9 @@
 * {
     box-sizing: border-box !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+i{
+    font-family: unset;
 }
 
 html,
@@ -147,7 +151,7 @@ input:focus {
 }
 
 .content_add_product {
-    width: 100%;
+    width: 83%;
     overflow: hidden;
     overflow-y: auto;
     padding-left: 30px;
@@ -299,4 +303,10 @@ input:focus {
 }
 .box_myTable2{
     margin-top: 40px;
+}
+#cke_editor1 #cke_1_contents{
+    height: 600px !important;
+}
+#cke_editor2 #cke_1_contents{
+    height: 700px !important;
 }

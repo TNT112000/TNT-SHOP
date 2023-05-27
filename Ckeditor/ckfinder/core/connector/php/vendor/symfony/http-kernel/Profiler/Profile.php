@@ -20,39 +20,53 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
  */
 class Profile
 {
-    private string $token;
+    private $token;
 
     /**
      * @var DataCollectorInterface[]
      */
-    private array $collectors = [];
+    private $collectors = array();
 
-    private ?string $ip = null;
-    private ?string $method = null;
-    private ?string $url = null;
-    private ?int $time = null;
-    private ?int $statusCode = null;
-    private ?self $parent = null;
+    private $ip;
+    private $method;
+    private $url;
+    private $time;
+    private $statusCode;
+
+    /**
+     * @var Profile
+     */
+    private $parent;
 
     /**
      * @var Profile[]
      */
-    private array $children = [];
+    private $children = array();
 
-    public function __construct(string $token)
+    /**
+     * @param string $token The token
+     */
+    public function __construct($token)
     {
         $this->token = $token;
     }
 
-    public function setToken(string $token)
+    /**
+     * Sets the token.
+     *
+     * @param string $token The token
+     */
+    public function setToken($token)
     {
         $this->token = $token;
     }
 
     /**
      * Gets the token.
+     *
+     * @return string The token
      */
-    public function getToken(): string
+    public function getToken()
     {
         return $this->token;
     }
@@ -60,82 +74,115 @@ class Profile
     /**
      * Sets the parent token.
      */
-    public function setParent(self $parent)
+    public function setParent(Profile $parent)
     {
         $this->parent = $parent;
     }
 
     /**
      * Returns the parent profile.
+     *
+     * @return self
      */
-    public function getParent(): ?self
+    public function getParent()
     {
         return $this->parent;
     }
 
     /**
      * Returns the parent token.
+     *
+     * @return null|string The parent token
      */
-    public function getParentToken(): ?string
+    public function getParentToken()
     {
-        return $this->parent?->getToken();
+        return $this->parent ? $this->parent->getToken() : null;
     }
 
     /**
      * Returns the IP.
+     *
+     * @return string The IP
      */
-    public function getIp(): ?string
+    public function getIp()
     {
         return $this->ip;
     }
 
-    public function setIp(?string $ip)
+    /**
+     * Sets the IP.
+     *
+     * @param string $ip
+     */
+    public function setIp($ip)
     {
         $this->ip = $ip;
     }
 
     /**
      * Returns the request method.
+     *
+     * @return string The request method
      */
-    public function getMethod(): ?string
+    public function getMethod()
     {
         return $this->method;
     }
 
-    public function setMethod(string $method)
+    public function setMethod($method)
     {
         $this->method = $method;
     }
 
     /**
      * Returns the URL.
+     *
+     * @return string The URL
      */
-    public function getUrl(): ?string
+    public function getUrl()
     {
         return $this->url;
     }
 
-    public function setUrl(?string $url)
+    public function setUrl($url)
     {
         $this->url = $url;
     }
 
-    public function getTime(): int
+    /**
+     * Returns the time.
+     *
+     * @return int The time
+     */
+    public function getTime()
     {
-        return $this->time ?? 0;
+        if (null === $this->time) {
+            return 0;
+        }
+
+        return $this->time;
     }
 
-    public function setTime(int $time)
+    /**
+     * @param int $time The time
+     */
+    public function setTime($time)
     {
         $this->time = $time;
     }
 
-    public function setStatusCode(int $statusCode)
+    /**
+     * @param int $statusCode
+     */
+    public function setStatusCode($statusCode)
     {
         $this->statusCode = $statusCode;
     }
 
-    public function getStatusCode(): ?int
+    /**
+     * @return int
+     */
+    public function getStatusCode()
     {
         return $this->statusCode;
     }
@@ -145,7 +192,7 @@ class Profile
      *
      * @return self[]
      */
-    public function getChildren(): array
+    public function getChildren()
     {
         return $this->children;
     }
@@ -157,7 +204,7 @@ class Profile
      */
     public function setChildren(array $children)
     {
-        $this->children = [];
+        $this->children = array();
         foreach ($children as $child) {
             $this->addChild($child);
         }
@@ -166,29 +213,22 @@ class Profile
     /**
      * Adds the child token.
      */
-    public function addChild(self $child)
+    public function addChild(Profile $child)
     {
         $this->children[] = $child;
         $child->setParent($this);
     }
 
-    public function getChildByToken(string $token): ?self
-    {
-        foreach ($this->children as $child) {
-            if ($token === $child->getToken()) {
-                return $child;
-            }
-        }
-
-        return null;
-    }
-
     /**
      * Gets a Collector by name.
      *
+     * @param string $name A collector name
+     *
+     * @return DataCollectorInterface A DataCollectorInterface instance
+     *
      * @throws \InvalidArgumentException if the collector does not exist
      */
-    public function getCollector(string $name): DataCollectorInterface
+    public function getCollector($name)
     {
         if (!isset($this->collectors[$name])) {
             throw new \InvalidArgumentException(sprintf('Collector "%s" does not exist.', $name));
@@ -202,7 +242,7 @@ class Profile
      *
      * @return DataCollectorInterface[]
      */
-    public function getCollectors(): array
+    public function getCollectors()
     {
         return $this->collectors;
     }
@@ -214,7 +254,7 @@ class Profile
      */
     public function setCollectors(array $collectors)
     {
-        $this->collectors = [];
+        $this->collectors = array();
         foreach ($collectors as $collector) {
             $this->addCollector($collector);
         }
@@ -228,13 +268,20 @@ class Profile
         $this->collectors[$collector->getName()] = $collector;
     }
 
-    public function hasCollector(string $name): bool
+    /**
+     * Returns true if a Collector for the given name exists.
+     *
+     * @param string $name A collector name
+     *
+     * @return bool
+     */
+    public function hasCollector($name)
     {
         return isset($this->collectors[$name]);
     }
 
-    public function __sleep(): array
+    public function __sleep()
     {
-        return ['token', 'parent', 'children', 'collectors', 'ip', 'method', 'url', 'time', 'statusCode'];
+        return array('token', 'parent', 'children', 'collectors', 'ip', 'method', 'url', 'time');
     }
 }

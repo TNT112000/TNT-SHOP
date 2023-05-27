@@ -1,15 +1,8 @@
 <div class="footer">
-    <div class="">
-        <div class="">
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-        </div>
+    <div class="box_footer">
+        <div class="title_footer">TNT-SHOP</div>
     </div>
-    <div class="">
-        <div class=""></div>
-    </div>
+        
 </div>
 
 

@@ -18,13 +18,13 @@ require './lib/blog.php';
                 <div class="">
                     <div class="row box_blog">
                         <div class="col-4 box_blog_item">
-                            <a href="" class="box_image_blog">
+                            <a href="?page=detail_blog&id=<?php echo $item['id_bv']?>" class="box_image_blog">
                                 <img src="./public/image/upload/<?php echo $item['ảnh_bài_viết']?>" alt="" class="box_image_blog_item">
                             </a>
                         </div>
                         <div class="col-8 box_blog_item">
                             <div class="box_content_blog">
-                                <a class="title_blog_item"><?php echo $item['tên_bài_viết']?></a>
+                                <a href="?page=detail_blog&id=<?php echo $item['id_bv']?>" class="title_blog_item"><?php echo $item['tên_bài_viết']?></a>
                                 <div class="date_blog_item"><?php echo $item['ngày_đăng']?></div>
                                 <div class="content_blog_item"><?php echo $item['nội_dung']?></div>
                             </div>

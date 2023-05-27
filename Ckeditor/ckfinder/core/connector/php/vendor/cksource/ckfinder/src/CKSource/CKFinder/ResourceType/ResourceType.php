@@ -3,8 +3,8 @@
 /*
  * CKFinder
  * ========
- * https://ckeditor.com/ckfinder/
- * Copyright (c) 2007-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * https://ckeditor.com/ckeditor-4/ckfinder/
+ * Copyright (c) 2007-2018, CKSource - Frederico Knabben. All rights reserved.
  *
  * The software, this file and its contents are subject to the CKFinder
  * License. Please read the license.txt file before using, installing, copying,
@@ -15,7 +15,6 @@
 namespace CKSource\CKFinder\ResourceType;
 
 use CKSource\CKFinder\Backend\Backend;
-use CKSource\CKFinder\Filesystem\File\File;
 use CKSource\CKFinder\ResizedImage\ResizedImageRepository;
 use CKSource\CKFinder\Thumbnail\ThumbnailRepository;
 
@@ -47,17 +46,17 @@ class ResourceType
         return $this->configNode['directory'];
     }
 
-    public function getBackend(): Backend
+    public function getBackend()
     {
         return $this->backend;
     }
 
-    public function getThumbnailRepository(): ThumbnailRepository
+    public function getThumbnailRepository()
     {
         return $this->thumbnailRepository;
     }
 
-    public function getResizedImageRepository(): ResizedImageRepository
+    public function getResizedImageRepository()
     {
         return $this->resizedImageRepository;
     }
@@ -79,31 +78,23 @@ class ResourceType
 
     public function getLabel()
     {
-        return $this->configNode['label'] ?? null;
+        return isset($this->configNode['label']) ? $this->configNode['label'] : null;
     }
 
-    public function isLazyLoaded(): bool
+    public function isLazyLoaded()
     {
         return isset($this->configNode['lazyLoad']) && $this->configNode['lazyLoad'];
     }
 
-    public function isAllowedExtension($extension): bool
+    public function isAllowedExtension($extension)
     {
         $extension = strtolower(ltrim($extension, '.'));
-
-        if ($extension === strtolower(File::NO_EXTENSION)) {
-            return false;
-        }
-
-        if (!$extension) {
-            $extension = strtolower(File::NO_EXTENSION);
-        }
 
         $allowed = $this->configNode['allowedExtensions'];
         $denied = $this->configNode['deniedExtensions'];
 
-        if (!empty($allowed) && !\in_array($extension, $allowed, true)
-            || !empty($denied) && \in_array($extension, $denied, true)) {
+        if (!empty($allowed) && !in_array($extension, $allowed) ||
+            !empty($denied) && in_array($extension, $denied)) {
             return false;
         }
 
@@ -115,8 +106,8 @@ class ResourceType
      *
      * @return string hash string
      */
-    public function getHash(): string
+    public function getHash()
     {
-        return substr(md5($this->configNode['name'].$this->configNode['backend'].$this->configNode['directory'].$this->backend->getBaseUrl().$this->backend->getRootDirectory()), 0, 16);
+        return substr(md5($this->configNode['name'] . $this->configNode['backend'] . $this->configNode['directory'] . $this->backend->getBaseUrl() . $this->backend->getRootDirectory()), 0, 16);
     }
 }
