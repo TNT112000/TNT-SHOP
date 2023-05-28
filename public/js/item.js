@@ -20,6 +20,7 @@ $(document).ready(function () {
     
 
     $('.delete_cart_item_click').click(function () {
+        
         var id = $(this).attr('data-id');
         data = { id: id };
         $.ajax({
@@ -28,8 +29,9 @@ $(document).ready(function () {
             data: data,
             dataType: 'text',
             success: function (data) {
-               console.log(data);
+               $('#total_all').text(data+'đ');
                $('#remote_'+id).detach();
+
             }
         })
     })

@@ -20,7 +20,7 @@ if (isset($_GET["page"])) {
 $path = "./page/{$page}.php";
 
 if (file_exists($path)) {
-    if ($page =="register" or $page =="login" or $page=="logout") {
+    if ($page =="register" or $page =="login" or $page=="logout" or $page=="bill_detail" or $page=="submit_bill") {
         require "$path";
     }
     else{

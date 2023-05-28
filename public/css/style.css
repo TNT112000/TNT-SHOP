@@ -966,3 +966,102 @@ span {
 .box_list_comment{
     padding: 0 200px 40px 40px;
 }
+
+.box_display_dh{
+    display: flex;
+    align-items: center;
+}
+.box_tt_dn{
+    padding: 10px;
+}
+.title_bill_item{
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #111;
+}
+.box_content_item{
+    padding: 10px;
+    padding-top: 30px;
+}
+.title_mt_item{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.content_item_item{
+    padding-bottom: 20px;
+}
+.input_content_bill{
+    width: 250px;
+    height: 30px;
+}
+.box_dc_content{
+    width: 100%;
+}
+.box_content_list_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.box_content_list_item_btn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.sp_bill_content{
+    font-size: 20px;
+    font-weight: 600;
+}
+.box_content_list_item_bd{
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+.product_bill_content{
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid black;
+}
+.bill_bill_content{
+    padding: 20px 0 20px 0;
+}
+.bill_btn_item{
+    width: 100px;
+    height: 40px;
+}
+.bill_bill_content_ok{
+    padding: 20px 0 20px 0;
+}
+.box_product_bill_content{
+    width: 100%;
+    max-height: 171px;
+    overflow-y: auto !important;
+    overflow: hidden;
+}
+::-webkit-scrollbar{
+    width: 4px;
+    background-color: #ccc;
+    height: 10px;
+}
+.name_product_bill{
+    font-size: 18px;
+}
+.error_bill{
+    height: 20px;
+    margin-right: 50px;
+}
+.radio_bill{
+    display: flex;
+    align-items: center;
+}
+.main_bill{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #ccc;
+    height: 100%;
+}
+.content_bill{
+    width: 500px;
+    height: 600px;
+    background-color: white;
+}
