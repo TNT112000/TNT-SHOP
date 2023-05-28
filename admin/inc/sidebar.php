@@ -19,8 +19,7 @@
                             <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="?page=list_product" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Danh sách sản phẩm</a></li>
                                 <li><a href="?page=add_product" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Thêm mới</a></li>
-                                <li><a href="?page=add_product_nb" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Sản phẩm nổi bật</a></li>
-                                
+                                <li><a href="?page=add_product_nb" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Sản phẩm nổi bật</a></li>                                
 
                             </ul>
                         </div>
@@ -62,7 +61,7 @@
                         <div class="collapse" id="7">
                             <ul class="list_category_admin_item btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="?page=add_introduce" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Giới thiệu</a></li>
-                                <li><a href="?page=add_contact" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Giới thiệu</a></li>
+                                <li><a href="?page=add_contact" class="link-body-emphasis d-inline-flex text-decoration-none rounded list_category_admin_item_link">Liên hệ</a></li>
                             </ul>
                         </div>
                     </li>

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('.cart_product_num_item').change(function () {
+       
         var id = $(this).attr('data-id');
         var num = $(this).val();
         data = { id: id, num: num };
@@ -29,6 +30,23 @@ $(document).ready(function () {
             success: function (data) {
                console.log(data);
                $('#remote_'+id).detach();
+            }
+        })
+    })
+
+    $('.btn_comment').click(function (event){
+        event.preventDefault();
+        var id =$(this).attr('id');
+        var comment = $('.content_comment').val();
+        data = {comment : comment , id:id};
+        $.ajax({
+            url: './lib/comment.php',
+            method: 'post',
+            data: data,
+            dataType: 'text',
+            success: function(data){
+                $('.list_comment').prepend(data);
+                $('.content_comment').val('');
             }
         })
     })

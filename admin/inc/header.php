@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse header_box" id="navbarNav">
                     <ul class="navbar-nav header_box_item">
                         <li class="nav-item ">
-                            <a class="navbar-brand header_box_item_link" href="?page=home">ADMIN</a>
+                            <a class="navbar-brand header_box_item_link" href="?page=list_product">ADMIN</a>
                         </li>
                         <?php if (isset($_SESSION["is_login"])) {
                             if ($_SESSION["is_login"]) { ?><div class="header_user">
