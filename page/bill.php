@@ -8,7 +8,7 @@ require './lib/bill.php';
     <div class="box_content row">
         <div class="">
             <div class="row">
-                <form action="?page=submit_bill" method="post" class="row">
+                <form action="" method="post" class="row">
                     <div class="col-6 box_tt_dn">
                         <div class="title_bill_item">Thông tin khách hàng</div>
                         <div class="box_content_item">
@@ -18,11 +18,12 @@ require './lib/bill.php';
                                     <input name="name_user" type="text" class="input_content_bill">
                                 </div>
                                 <div class="col-6 content_item_item">
-                                    <div class="title_mt_item">Thanh toán</div>
+                                    <div class="title_mt_item">Giao hàng</div>
                                     <select class="input_content_bill">
-                                        <option selected disabled>Hình thức thanh toán</option>
-                                        <option value="Tại nhà" class="">Tại nhà</option>
-                                        <option value="Online" class="">Online</option>
+
+                                        <option value="Bình thường" class="">Bình thường</option>
+                                        <option value="Nhanh" class="">Nhanh</option>
+                                        <option value="Hỏa tốc" class="">Hỏa tốc</option>
                                     </select>
 
                                 </div>
@@ -34,7 +35,7 @@ require './lib/bill.php';
                                 </div>
                                 <div class="col-6 content_item_item">
                                     <div class="title_mt_item">Email</div>
-                                    <input name="email_user" type="text" class="input_content_bill">
+                                    <input name="email_user" type="email" class="input_content_bill">
                                 </div>
                             </div>
                             <div class="box_dc_content">
@@ -53,6 +54,7 @@ require './lib/bill.php';
                             <div class="box_product_bill_content">
                                 <?php
                                 $total_all = 0;
+                                if(isset($list_cart_bill)){
                                 foreach ($list_cart_bill as $item) {
                                     $total_all += $item['tổng_tiền'];
                                     $item['tổng_tiền'] = number_format($item['tổng_tiền'], 0, '.', '.',);
@@ -63,6 +65,7 @@ require './lib/bill.php';
                                     </div>
                                 <?php
                                 }
+                            }
                                 $total_all = number_format($total_all, 0, '.', '.',);
                                 ?>
                             </div>
@@ -90,5 +93,4 @@ require './lib/bill.php';
             </div>
         </div>
     </div>
-
 </div>

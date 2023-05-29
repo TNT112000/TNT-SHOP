@@ -9,7 +9,7 @@ require "./lib/list_product.php"
 
             <div class="list_product">
                 <div class="list_product_title">SẢN PHẨM</div>
-                <div class="row">
+                <div class="list_product_product_over row">
 
                     <!-- DANH SÁCH SẢN PHẨM -->
 

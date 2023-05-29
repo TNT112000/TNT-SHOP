@@ -2,9 +2,11 @@
     box-sizing: border-box !important;
     font-family: Arial, Helvetica, sans-serif;
 }
-i{
+
+i {
     font-family: unset;
 }
+
 html,
 body {
     width: 100%;
@@ -388,6 +390,7 @@ input:focus {
 /* CONTENT HOME*/
 
 .content {
+    min-height: 610px;
     padding: 30px 0 50px 0;
     width: 100%;
     display: flex;
@@ -550,6 +553,7 @@ input:focus {
     text-align: center;
 }
 
+
 .list_product_btn {
     display: flex;
     justify-content: space-around;
@@ -580,12 +584,10 @@ input:focus {
     font-size: 19px;
 }
 
-.list_product {
-    width: 100%;
-}
 
 .list_product {
-    margin-top: 30px
+    margin-top: 30px;
+    width: 100%;
 }
 
 .list_product_title {
@@ -819,17 +821,19 @@ input:focus {
     width: 100%;
     font-size: 25px;
 }
-.box_blog{
-    margin-top: 30px;
+
+.box_blog {
+    margin-bottom: 30px;
     padding: 15px;
     height: 260px;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     border-radius: 20px;
 }
-.box_image_blog{
+
+.box_image_blog {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -837,11 +841,13 @@ input:focus {
     height: 100%;
     border-radius: 5px;
 }
-.box_image_blog_item{
+
+.box_image_blog_item {
     width: 100%;
     height: 100%;
 }
-.title_blog_item{
+
+.title_blog_item {
     display: block;
     height: 45px;
     font-size: 20px;
@@ -851,57 +857,68 @@ input:focus {
     overflow: hidden;
 }
 
-.box_blog_item{
+.box_blog_item {
     height: 100%;
 }
-.date_blog_item{
+
+.date_blog_item {
     font-size: 18px;
-    margin:  0 15px 15px 15px;
+    margin: 0 15px 15px 15px;
 }
-.content_blog_item{
-    margin:  0 15px 15px 15px;
+
+.content_blog_item {
+    margin: 0 15px 15px 15px;
     font-size: 17px;
     word-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
     height: 100px;
 }
-.box_content_blog{
+
+.box_content_blog {
     margin-top: 30px;
     width: 100%;
     background-color: white;
-    
+
 }
-.box_content_blog_item{
+
+.box_content_blog_item {
     padding: 40px 20px 40px 20px;
     width: 100%;
 }
-.box_content_blog_name{
+
+.box_content_blog_name {
     line-height: 30px;
     font-size: 27px;
     font-weight: 600;
     width: 100%;
     padding-bottom: 25px;
 }
-.box_content_blog_date{
+
+.box_content_blog_date {
     font-size: 18px;
     width: 100%;
     padding-bottom: 25px;
 }
-.box_content_blog_img{
+
+.box_content_blog_img {
     width: 100%;
     margin-bottom: 25px;
 }
-.box_content_blog_img_item{
+
+.box_content_blog_img_item {
     width: 100%;
 }
-.box_content_blog_detail{
+
+.box_content_blog_detail {
     font-size: 17px !important;
 }
+
 span {
     font-size: 17px;
 }
-.box_footer{
+
+.box_footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -909,150 +926,185 @@ span {
     width: 100%;
     height: 100px;
 }
-.title_footer{
+
+.title_footer {
     color: white;
     font-size: 25px;
 }
-.box_comment{
+
+.box_comment {
     width: 100%;
 }
-.form_comment{
+
+.form_comment {
     padding: 40px 300px 40px 40px;
 }
-.content_comment{
+
+.content_comment {
     width: 100%;
     margin-bottom: 20px;
     background-color: #f7f7f7;
 }
-.btn_comment{
+
+.btn_comment {
     width: 80px;
     height: 35px;
 }
-.box_comment{
+
+.box_comment {
     background-color: white;
     margin-top: 40px;
 }
-.box_list_comment{
+
+.box_list_comment {
     padding: 0 200px 40px 40px;
 }
-.comment_item_name{
+
+.comment_item_name {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
-.list_comment{
+
+.list_comment {
     margin-top: 20px;
 }
-.all_comment{
+
+.all_comment {
     font-size: 20px;
     font-weight: 600;
 }
-.comment_item{
+
+.comment_item {
     background-color: #f7f7f7;
     padding: 20px 20px 20px 20px;
     border-bottom: 1px solid black;
 }
-.comment_item_name_item{
+
+.comment_item_name_item {
     font-size: 19px;
 }
 
-.comment_item_date{
+.comment_item_date {
     font-size: 19px;
 }
-.comment_item_text{
+
+.comment_item_text {
     font-size: 18px;
 }
-.box_list_comment{
+
+.box_list_comment {
     padding: 0 200px 40px 40px;
 }
 
-.box_display_dh{
+.box_display_dh {
     display: flex;
     align-items: center;
 }
-.box_tt_dn{
+
+.box_tt_dn {
     padding: 10px;
 }
-.title_bill_item{
+
+.title_bill_item {
     font-size: 30px;
     font-weight: 600;
     padding-bottom: 20px;
     border-bottom: 1px solid #111;
 }
-.box_content_item{
+
+.box_content_item {
     padding: 10px;
     padding-top: 30px;
 }
-.title_mt_item{
+
+.title_mt_item {
     font-size: 20px;
     padding-bottom: 10px;
 }
-.content_item_item{
+
+.content_item_item {
     padding-bottom: 20px;
 }
-.input_content_bill{
+
+.input_content_bill {
     width: 250px;
     height: 30px;
 }
-.box_dc_content{
+
+.box_dc_content {
     width: 100%;
 }
-.box_content_list_item{
+
+.box_content_list_item {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.box_content_list_item_btn{
+
+.box_content_list_item_btn {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.sp_bill_content{
+
+.sp_bill_content {
     font-size: 20px;
     font-weight: 600;
 }
-.box_content_list_item_bd{
+
+.box_content_list_item_bd {
     border-bottom: 1px solid black;
     padding-bottom: 20px;
 }
-.product_bill_content{
+
+.product_bill_content {
     padding: 20px 0 20px 0;
     border-bottom: 1px solid black;
 }
-.bill_bill_content{
+
+.bill_bill_content {
     padding: 20px 0 20px 0;
 }
-.bill_btn_item{
+
+.bill_btn_item {
     width: 100px;
     height: 40px;
 }
-.bill_bill_content_ok{
+
+.bill_bill_content_ok {
     padding: 20px 0 20px 0;
 }
-.box_product_bill_content{
+
+.box_product_bill_content {
     width: 100%;
     max-height: 171px;
     overflow-y: auto !important;
     overflow: hidden;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     width: 4px;
     background-color: #ccc;
     height: 10px;
 }
-.name_product_bill{
+
+.name_product_bill {
     font-size: 18px;
 }
-.error_bill{
+
+.error_bill {
     height: 20px;
     margin-right: 50px;
 }
-.radio_bill{
+
+.radio_bill {
     display: flex;
     align-items: center;
 }
-.main_bill{
+
+.main_bill {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1060,8 +1112,112 @@ span {
     background-color: #ccc;
     height: 100%;
 }
-.content_bill{
+
+.content_bill {
     width: 500px;
-    height: 600px;
+    min-height: 600px;
     background-color: white;
+}
+
+.box_content_bill {
+    padding: 20px;
+}
+
+.box_content_bill_item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 10px 0;
+}
+
+.logo_bill {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.date_bill {
+    font-size: 18px;
+}
+
+.bill_title_detail {
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+
+.user_bill_detail {
+    font-size: 18px;
+    padding: 5px 0 5px 0;
+}
+
+.product_bill_detail {
+    font-size: 18px;
+}
+
+.box_content_bill_item_bd {
+    border-bottom: 1px solid #111;
+}
+
+.status_bill {
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+}
+
+.list_product_item_1 {
+    white-space: nowrap;
+
+}
+
+.content_2 {
+    display: flex;
+    justify-content: center;
+    height: 610px;
+}
+
+.title_add_product {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 30px 0 30px 0;
+}
+
+.main_bill {
+    position: relative;
+}
+
+.btn_bill_back {
+    width: 90px;
+    height: 40px;
+    background-color: white;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.content_bill_bt {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+.status_text{
+    width: 90px;
+    height: 40px;
+    font-size: 18px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.list_product_product_over{
+    margin-top: 20px;
+    display: flex;
+    max-height: 1400px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.list_product_blog_item{
+    margin-top: 30px;
+    max-height: 1160px;
+    overflow: hidden;
+    overflow-y: auto;
 }

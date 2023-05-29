@@ -20,7 +20,7 @@ $path = "./page/{$page}.php";
 
 
 if (file_exists($path)) {
-    if($page=="logout" or  $page=="delete_product" or $page=="delete_product_nb" or $page=="delete_blog"){
+    if($page=="logout" or  $page=="delete_product" or $page=="delete_product_nb"  or $page=="delete_blog" or $page=="bill_detail"){
         require "$path";
     }
     else{

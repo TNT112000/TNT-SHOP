@@ -11,6 +11,7 @@ require './lib/blog.php';
 
             <div class="list_product">
                 <div class="list_product_title">BÀI VIẾT</div>
+                <div class="list_product_blog_item">
                 <?php
                 foreach($list_blog as $item){
 
@@ -34,7 +35,7 @@ require './lib/blog.php';
                 <?php
             }
             ?>
-
+            </div>
             </div>
         </div>
     </div>

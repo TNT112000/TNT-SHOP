@@ -2,11 +2,11 @@
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql_pr = "SELECT * from sản_phẩm where id_sp='{$id}'";
-    $result_pr = mysqli_query($conn, $sql_pr);
-    if (mysqli_num_rows($result_pr) > 0) {
-        while ($row = mysqli_fetch_assoc($result_pr)) {
-            $update_sp = $row;
+    $sql_pr_1 = "SELECT * from sản_phẩm where id_sp='{$id}'";
+    $result_pr_1 = mysqli_query($conn, $sql_pr_1);
+    if (mysqli_num_rows($result_pr_1) > 0) {
+        while ($row = mysqli_fetch_assoc($result_pr_1)) {
+            $update_sp_1 = $row;
         }
     }
 }
@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
 if (isset($_POST['update_product'])) {
 
     if (empty($_FILES["image_product"]["name"])) {
-        $image_product = $update_sp["ảnh_sản_phẩm"];
+        $image_product = $update_sp_1["ảnh_sản_phẩm"];
     } else {
         $upload_dir = "../public/image/upload/";
         // ĐƯỜNG DẪN FILE SAU KHI SỬA
@@ -78,6 +78,17 @@ if (isset($_POST['update_product'])) {
             $error["add_product"] = "Chỉnh sửa thành công";
         } else {
             echo mysqli_connect_errno();
+        }
+    }
+}
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql_pr = "SELECT * from sản_phẩm where id_sp='{$id}'";
+    $result_pr = mysqli_query($conn, $sql_pr);
+    if (mysqli_num_rows($result_pr) > 0) {
+        while ($row = mysqli_fetch_assoc($result_pr)) {
+            $update_sp = $row;
         }
     }
 }

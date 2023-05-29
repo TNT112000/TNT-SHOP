@@ -310,3 +310,39 @@ input:focus {
 #cke_editor2 #cke_1_contents{
     height: 700px !important;
 }
+.list_bill{
+    margin-top: 30px;
+}
+.main_bill{
+    position: relative;
+}
+
+.content_bill_btn{
+    position: absolute;
+    top:100px;
+    left: 100px;
+}
+.content_bill_btn_fo{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.status_btn_bill{
+    background-color: white;
+    border: unset;
+    padding: 10px;
+    font-size: 18px;
+}
+.btn_bill_back{
+    width: 90px;
+    height: 40px;
+    background-color: white;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.status_text{
+    font-size: 20px;
+    margin-left: 10px;
+}

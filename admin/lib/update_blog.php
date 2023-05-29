@@ -2,18 +2,18 @@
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql_bl = "SELECT * from bai_viet where id_bv='{$id}'";
-    $result_bl = mysqli_query($conn, $sql_bl);
-    if (mysqli_num_rows($result_bl) > 0) {
-        while ($row = mysqli_fetch_assoc($result_bl)) {
-            $update_blog = $row;
+    $sql_bl_1 = "SELECT * from bai_viet where id_bv='{$id}'";
+    $result_bl_1 = mysqli_query($conn, $sql_bl_1);
+    if (mysqli_num_rows($result_bl_1) > 0) {
+        while ($row = mysqli_fetch_assoc($result_bl_1)) {
+            $update_blog_1 = $row;
         }
     }
 }
 
 if (isset($_POST['update_blog'])) {
     if (empty($_FILES["image_blog"]["name"])) {
-        $image_blog = $update_blog["ảnh_bài_viết"];
+        $image_blog = $update_blog_1["ảnh_bài_viết"];
     } else {
         $upload_dir = "../public/image/upload/";
         // ĐƯỜNG DẪN FILE SAU KHI SỬA
@@ -48,6 +48,16 @@ if (isset($_POST['update_blog'])) {
             $error["add_blog"] = "Chỉnh sửa thành công";
         } else {
             echo mysqli_connect_errno();
+        }
+    }
+}
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql_bl = "SELECT * from bai_viet where id_bv='{$id}'";
+    $result_bl = mysqli_query($conn, $sql_bl);
+    if (mysqli_num_rows($result_bl) > 0) {
+        while ($row = mysqli_fetch_assoc($result_bl)) {
+            $update_blog = $row;
         }
     }
 }

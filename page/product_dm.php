@@ -10,7 +10,7 @@ require './lib/product_dm.php';
 
             <div class="list_product">
                 <div class="list_product_title"><?php echo $category ?></div>
-                <div class="row">
+                <div class="list_product_product_over row">
 
                     <!-- DANH SÁCH SẢN PHẨM -->
 

@@ -1,6 +1,6 @@
 <?php
-require './lib/bill_detail.php';
-
+require './lib/update_status.php';
+require '../lib/bill_detail.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,28 +14,33 @@ require './lib/bill_detail.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./font-awesome/css/all.css" class="">
+    <link rel="stylesheet" href="../font-awesome/css/all.css" class="">
 
-    <link rel="stylesheet" href="./public/css/reset.css" class="">
+    <link rel="stylesheet" href="../public/css/reset.css" class="">
+    <link rel="stylesheet" href="../public/css/style.css" class="">
     <link rel="stylesheet" href="./public/css/style.css" class="">
-    <link rel="stylesheet" href="./public/css/pseudo-class.css" class="">
-    <script src="./public/js/item.js"></script>
+    <link rel="stylesheet" href="../public/css/pseudo-class.css" class="">
+    <script src="../public/js/item.js"></script>
     <title>TNT-SHOP</title>
 </head>
 
 <body>
     <div class="main_bill">
-        <div class="content_bill_bt">
-            <?php
-            if ($bill_item_1['trạng_thái'] == 'chưa giao') {
-            ?>
+        <div class="content_bill_btn">
+            <form action="" method='post' class="content_bill_btn_fo">
+                <button class="status_btn_bill" type="submit" name="status_bill">Trạng thái</button>
+                <?php 
+                if($bill_item_1['trạng_thái']=='chưa giao'){
+                ?>
                 <div class="status_text" style="color:red"><?php echo $bill_item_1['trạng_thái'] ?></div>
-            <?php } else { ?>
+                <?php }
+                else {?>
                 <div class="status_text" style="color:green"><?php echo $bill_item_1['trạng_thái'] ?></div>
-            <?php
-            }
-            ?>
-            <a href="?page=history_bill" class="btn_bill_back">Quay lại</a>
+                <?php
+                }
+                ?>
+            </form>
+            <a href="?page=list_bill" class="btn_bill_back">Quay lại</a>
         </div>
         <div class="content_bill">
             <div class="box_content_bill">
