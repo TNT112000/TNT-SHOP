@@ -69,8 +69,7 @@ require "./lib/add_product.php";
         <div class="box_add_product">
             <div class="name_add_product">Ảnh sản phẩm</div>
             <div class="display_img_product">
-
-                <input type="file" name="image_product" class="">
+                <input type="file" id='image_product' class='image_product' name="image_product[]" multiple="multiple">
             </div>
             <div class="error_product"> <?php echo show_error("file_img") ?></div>
         </div>

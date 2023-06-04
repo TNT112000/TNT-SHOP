@@ -8,3 +8,4 @@ if (isset($_GET['id'])) {
         $detail_blog = mysqli_fetch_assoc($result_dt_blog);
     }
 }
+

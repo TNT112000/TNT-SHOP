@@ -35,4 +35,6 @@ if (isset($_POST['update_contact'])) {
             echo mysqli_connect_errno();
         }
     }
+   
 }
+

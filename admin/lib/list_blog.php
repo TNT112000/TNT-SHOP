@@ -6,6 +6,4 @@ $sql="SELECT * FROM bai_viet ";
       while($row=mysqli_fetch_assoc($result)){
      $list_blog[]=$row;
    }
-                        
-                    }
-                    ?>
+}

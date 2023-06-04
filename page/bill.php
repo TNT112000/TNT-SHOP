@@ -1,5 +1,4 @@
 <?php
-
 require './lib/bill.php';
 
 ?>

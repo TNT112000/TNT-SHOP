@@ -346,3 +346,18 @@ input:focus {
     font-size: 20px;
     margin-left: 10px;
 }
+.status_list{
+    margin-left: 20px;
+    width: 90px;
+    height: 40px;
+}
+.display1 {
+    padding-top:  20px;
+}
+.header_data_table{
+    background-color: lightskyblue;
+}
+#myTable_wrapper{
+    padding: 20px;
+    border: 1px solid #ccc;
+}

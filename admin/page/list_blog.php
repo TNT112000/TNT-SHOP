@@ -9,15 +9,14 @@ require "./lib/list_blog.php"
             $('#myTable').DataTable();
         });
     </script>
-    <div class="title_add_product">Danh sách sản phẩm</div>
+    <div class="title_add_product">Danh sách bài viết</div>
     <div class="">
         <a href="?page=add_product" class="link_add_product">Thêm mới</a>
     </div>
     <div class="">
-        <table id="myTable" class="display1">
+        <table id="myTable" class="display1 table table-striped">
 
-            <thead>
-
+            <thead class="header_data_table">
                 <tr>
 
                     <th class="list_product_item">STT</th>

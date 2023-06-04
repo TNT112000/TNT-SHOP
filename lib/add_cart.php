@@ -15,6 +15,7 @@ if (isset($_SESSION["id"])) {
     $add_cart_status = 'Thêm giỏ hàng';
 }
 
+
 if (isset($_POST["add_cart"])) {
     if (isset($_SESSION["is_login"])) {
         if (isset($_GET['id'])) {
@@ -48,4 +49,5 @@ if (isset($_POST["add_cart"])) {
     } else {
         header('location: ?page=login');
     }
+    
 }

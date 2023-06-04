@@ -14,9 +14,9 @@ require "../lib/list_product.php"
         <a href="?page=add_product" class="link_add_product">Thêm mới</a>
     </div>
     <div class="">
-        <table id="myTable" class="display1">
+        <table id="myTable" class="display1 table table-striped">
 
-            <thead>
+            <thead class="header_data_table">
 
                 <tr>
 

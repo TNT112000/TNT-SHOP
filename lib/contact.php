@@ -7,4 +7,5 @@ if (mysqli_num_rows($result_introduce) > 0) {
     }
 }
 $update_introduce['liên_hệ'] = nl2br($update_introduce['liên_hệ']);
+
 ?>

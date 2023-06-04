@@ -74,4 +74,5 @@ if (isset($_POST["btn_add_product"])) {
             }
         }
     }
+   
 }

@@ -1,5 +1,6 @@
 <?php
 
+
 ?>
 
 <div class="content">
@@ -47,10 +48,10 @@
                                 <img src="./public/image/upload/<?php echo $item["ảnh_sản_phẩm"] ?>" alt="" class="cart_product_img_item">
                             </div>
                             <div class="cart_product_num">
-                                <input data-id="<?php echo $item["id_gh"] ?>" value="<?php echo $item['số_lượng'] ?>" min="1" max="100" type="number" class="cart_product_num_item">
+                                <input data-id="<?php echo $item["id_gh"] ?>" value="<?php echo $item['số_lượng'] ?>" min="1" max="<?php echo $item['all_num'] ?>" type="number" class="cart_product_num_item">
                             </div>
                             <div class="cart_product_price"><?php echo $formatNumber; ?>đ</div>
-                            <div id="cart_fix_<?php echo $item["id_gh"] ?>" class="cart_product_tt-price cart_product_tt-price_js"><?php echo $item['tổng_tiền'] ?><span>đ</span></div>
+                            <div id="cart_fix_<?php echo $item["id_gh"] ?>" class="cart_product_tt-price cart_product_tt-price_js"><?php echo $item['tổng_tiền'] ?>đ</div>
                             <a data-id="<?php echo $item["id_gh"] ?>" class="cart_product_stt delete_cart_item_click"> <i id="delete_cart_item" class="fa-solid fa-delete-left"></i></a>
                         </div>
                     <?php
@@ -62,7 +63,7 @@
                 <div class="box_cart_product_item_1 total_all">
                     <div class="flex_cart_product_total">
                         <div class="cart_product_name cart_product_img_color width_cart_product_total">TỔNG TIỀN</div>
-                        <div id="total_all" class="cart_product_name cart_product_img_color width_cart_product_total"><?php echo $total_all;?><span>đ</span></div>
+                        <div id="total_all" class="cart_product_name cart_product_img_color width_cart_product_total"><?php echo $total_all;?>đ</div>
                     </div>
                 </div>
                 <div class="box_buy_now">

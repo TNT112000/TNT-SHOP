@@ -55,9 +55,16 @@ a{
 }
 .cart_product_btn:hover{
     color: white;
+    cursor: pointer;
 }
 
 .buy_now:hover{
     color: white;
     
+}
+.cart_hover_item_url:hover .cart_hover_item_link{
+    color: white;
+}
+.hover_cart_header:hover  .box_cart_hover{
+    display: block;
 }

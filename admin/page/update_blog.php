@@ -6,7 +6,7 @@ require './lib/update_blog.php';
 
 <div class="content_add_product">
     <form enctype="multipart/form-data" action="" method="post">
-        <div class="title_add_product">Thêm bài viết</div>
+        <div class="title_add_product">Chỉnh sửa bài viết</div>
         <div class="error_product"> <?php echo show_error("add_blog"); ?> </div>
         <div class="box_add_product">
             <div class="name_add_product">Tên bài viết</div>

@@ -5,7 +5,7 @@ require "./lib/update_product.php";
 
 <div class="content_add_product">
     <form enctype="multipart/form-data" action="" method="post">
-        <div class="title_add_product">Thêm sản phẩm</div>
+        <div class="title_add_product">Chỉnh sửa sản phẩm</div>
         <div class="error_product"> <?php echo show_error("add_product"); ?> </div>
         <div class="box_add_product">
             <div class="name_add_product">Tên sản phẩm</div>

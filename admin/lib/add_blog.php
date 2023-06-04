@@ -33,4 +33,6 @@ if (isset($_POST['btn_add_blog'])) {
             echo mysqli_connect_errno();
         }
     }
+   
 }
+

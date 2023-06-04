@@ -10,5 +10,6 @@ if (isset($_GET['id'])) {
             $bill_item_2[]=$row;
         }
     }
+    
 }
 

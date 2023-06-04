@@ -13,9 +13,9 @@ require './lib/list_bill.php';
     <div class="title_add_product">Danh sách đơn hàng</div>
 
     <div class="list_bill">
-        <table id="myTable" class="display1">
+        <table id="myTable" class="display1 table table-striped">
 
-            <thead>
+            <thead class="header_data_table">
 
                 <tr>
 
@@ -32,32 +32,38 @@ require './lib/list_bill.php';
 
             <tbody>
                 <?php
-                $stt = 1;
-                foreach ($list_bill as $item) {
+                if (isset($list_bill)) {
+                    $stt = 1;
+                    foreach ($list_bill as $item) {
 
-                    $product['detail_bill'] = "?page=bill_detail&id={$item['id_dh']}";
+                        $product['detail_bill'] = "?page=bill_detail&id={$item['id_dh']}";
 
                 ?>
-                    <tr>
-                        <td class="list_product_item"><?php echo $stt++; ?>
-                        </td>
+                        <tr>
+                            <td class="list_product_item"><?php echo $stt++; ?>
+                            </td>
 
-                        <td class="list_product_item"><?php echo $item["tên_người_mua"] ?></td>
-                        <td class="list_product_item"><?php echo $item["SĐT"] ?></td>
-                        <td class="list_product_item"><?php echo $item["địa_chỉ"] ?></td>
-                        <td class="list_product_item"><?php echo $item["ngày_mua"] ?></td>
-                        <?php if ($item["trạng_thái"] == 'chưa giao') { ?>
-                            <td class="list_product_item" style="color:red"><?php echo $item["trạng_thái"] ?></td>
-                        <?php
-                        } else {
-                        ?>
-                            <td class="list_product_item" style="color:green"><?php echo $item["trạng_thái"] ?></td>
-                        <?php } ?>
-                        <td class=""><a href="<?php echo $product['detail_bill'] ?>" class=""><i class="fa-sharp fa-solid fa-pen-to-square"></i></a></td>
+                            <td class="list_product_item"><?php echo $item["tên_người_mua"] ?></td>
+                            <td class="list_product_item"><?php echo $item["SĐT"] ?></td>
+                            <td class="list_product_item"><?php echo $item["địa_chỉ"] ?></td>
+                            <td class="list_product_item"><?php echo $item["ngày_mua"] ?></td>
+                            <?php if ($item["trạng_thái"] == 'Chưa giao') { ?>
+                                        <td class="list_product_item_1" style="color:red"><?php echo $item["trạng_thái"] ?></td>
+                                    <?php
+                                    } elseif ($item["trạng_thái"] == 'Đã giao'){
+                                    ?>
+                                        <td class="list_product_item_1" style="color:green"><?php echo $item["trạng_thái"] ?></td>
+                                    <?php } else{?>
+                                        <td class="list_product_item_1" style="color:orange"><?php echo $item["trạng_thái"] ?></td>
+                                        <?php
+                                            }
+                                            ?>
+                            <td class=""><a href="<?php echo $product['detail_bill'] ?>" class=""><i class="fa-sharp fa-solid fa-pen-to-square"></i></a></td>
 
 
-                    </tr>
+                        </tr>
                 <?php
+                    }
                 }
                 ?>
 

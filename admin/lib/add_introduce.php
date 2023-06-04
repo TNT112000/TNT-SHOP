@@ -1,12 +1,5 @@
 <?php
 
-    $sql_bl = "SELECT * from gioi_thieu ";
-    $result_bl = mysqli_query($conn, $sql_bl);
-    if (mysqli_num_rows($result_bl) > 0) {
-        while ($row = mysqli_fetch_assoc($result_bl)) {
-            $update_introduce= $row;
-        }
-    }
 
 
 if (isset($_POST['update_introduce'])) {
@@ -35,5 +28,15 @@ if (isset($_POST['update_introduce'])) {
         } else {
             echo mysqli_connect_errno();
         }
+    }
+   
+}
+
+
+$sql_bl = "SELECT * from gioi_thieu ";
+$result_bl = mysqli_query($conn, $sql_bl);
+if (mysqli_num_rows($result_bl) > 0) {
+    while ($row = mysqli_fetch_assoc($result_bl)) {
+        $update_introduce= $row;
     }
 }

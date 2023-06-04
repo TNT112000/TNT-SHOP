@@ -24,5 +24,5 @@ $sql_2="SELECT * from sản_phẩm where nổi_bật='1'";
             $list_name_product_1[]=$row ;
         }
     }
-
+   
 ?>

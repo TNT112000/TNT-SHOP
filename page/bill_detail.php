@@ -1,4 +1,5 @@
 <?php
+
 require './lib/bill_detail.php';
 
 ?>
@@ -26,16 +27,7 @@ require './lib/bill_detail.php';
 <body>
     <div class="main_bill">
         <div class="content_bill_bt">
-            <?php
-            if ($bill_item_1['trạng_thái'] == 'chưa giao') {
-            ?>
-                <div class="status_text" style="color:red"><?php echo $bill_item_1['trạng_thái'] ?></div>
-            <?php } else { ?>
-                <div class="status_text" style="color:green"><?php echo $bill_item_1['trạng_thái'] ?></div>
-            <?php
-            }
-            ?>
-            <a href="?page=history_bill" class="btn_bill_back">Quay lại</a>
+            <a href="?page=history_bill" class="btn_bill_back">Xác nhận</a>
         </div>
         <div class="content_bill">
             <div class="box_content_bill">

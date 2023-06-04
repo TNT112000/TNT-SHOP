@@ -75,5 +75,5 @@ if (isset($_POST["btn_register"])) {
            
         }
     }
-    mysqli_close($conn);
+    
 }

@@ -13,7 +13,7 @@ if(isset($_POST["upload_img_product"])){
     else{
         $error["file_img"]="upload file không thành công";
     }
-
+    
 }
 
 ?>

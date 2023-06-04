@@ -1,12 +1,14 @@
 
 <?php
 session_start();
-require "../config/connect.php";
-require "../config/function.php";
-
-if(!$_SESSION["is_login"]){
+if($_SESSION['level']!=1){
     header('location: ../?page=home');
 }
+
+
+
+require "../config/connect.php";
+require "../config/function.php";
 
 if (isset($_GET["page"])) {
     $page = $_GET["page"];

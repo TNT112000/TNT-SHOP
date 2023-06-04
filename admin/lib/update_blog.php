@@ -9,6 +9,7 @@ if (isset($_GET['id'])) {
             $update_blog_1 = $row;
         }
     }
+    
 }
 
 if (isset($_POST['update_blog'])) {
@@ -50,6 +51,7 @@ if (isset($_POST['update_blog'])) {
             echo mysqli_connect_errno();
         }
     }
+    
 }
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -60,4 +62,5 @@ if (isset($_GET['id'])) {
             $update_blog = $row;
         }
     }
+   
 }

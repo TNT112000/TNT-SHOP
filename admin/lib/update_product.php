@@ -9,6 +9,7 @@ if (isset($_GET['id'])) {
             $update_sp_1 = $row;
         }
     }
+    
 }
 
 if (isset($_POST['update_product'])) {
@@ -80,6 +81,7 @@ if (isset($_POST['update_product'])) {
             echo mysqli_connect_errno();
         }
     }
+    
 }
 
 if (isset($_GET['id'])) {
@@ -91,4 +93,5 @@ if (isset($_GET['id'])) {
             $update_sp = $row;
         }
     }
+    
 }

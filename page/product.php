@@ -14,7 +14,7 @@ require "./lib/list_product.php"
                     <!-- DANH SÁCH SẢN PHẨM -->
 
                     <?php
-
+                    if (isset($list_product)) {
                     foreach ($list_product as $item) {
                         $id = $item["id_sp"];
                         $price = $item["giá_tiền"];
@@ -39,6 +39,7 @@ require "./lib/list_product.php"
                         </div>
                     <?php
                     }
+                }
                     ?>
 
                 </div>
