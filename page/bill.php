@@ -14,7 +14,7 @@ require './lib/bill.php';
                             <div class="row box_display_dh">
                                 <div class="col-6 content_item_item">
                                     <div class="title_mt_item">Họ tên</div>
-                                    <input name="name_user" type="text" class="input_content_bill">
+                                    <input name="name_user" type="text" class="input_content_bill" value="<?php echo $info_user['ten_dang_nhap']?>">
                                 </div>
                                 <div class="col-6 content_item_item">
                                     <div class="title_mt_item">Giao hàng</div>
@@ -30,16 +30,16 @@ require './lib/bill.php';
                             <div class="row">
                                 <div class="col-6 content_item_item">
                                     <div class="title_mt_item">Số điện thoại</div>
-                                    <input name="phone_user" type="text" class="input_content_bill">
+                                    <input name="phone_user" type="text" class="input_content_bill" value="<?php echo $info_user['dien_thoai']?>">
                                 </div>
                                 <div class="col-6 content_item_item">
                                     <div class="title_mt_item">Email</div>
-                                    <input name="email_user" type="email" class="input_content_bill">
+                                    <input name="email_user" type="email" class="input_content_bill" value="<?php echo $info_user['email']?>">
                                 </div>
                             </div>
                             <div class="box_dc_content">
-                                <div class="title_mt_item">Đại chỉ</div>
-                                <textarea name="address_user" id="" cols="60" rows="10"></textarea>
+                                <div class="title_mt_item">Địa chỉ</div>
+                                <textarea name="address_user" id="" cols="60" rows="10"><?php echo $info_user['dia_chi']?></textarea>
                             </div>
                         </div>
                     </div>
@@ -55,12 +55,12 @@ require './lib/bill.php';
                                 $total_all = 0;
                                 if(isset($list_cart_bill)){
                                 foreach ($list_cart_bill as $item) {
-                                    $total_all += $item['tổng_tiền'];
-                                    $item['tổng_tiền'] = number_format($item['tổng_tiền'], 0, '.', '.',);
+                                    $total_all += $item['tong_tien'];
+                                    $item['tong_tien'] = number_format($item['tong_tien'], 0, '.', '.',);
                                 ?>
                                     <div class="box_content_list_item product_bill_content">
-                                        <div class="name_product_bill"><?php echo $item['tên_sản_phẩm'] . ' x ' . $item['số_lượng'] ?></div>
-                                        <div class="price_product_bill"><?php echo $item['tổng_tiền'] ?>đ</div>
+                                        <div class="name_product_bill"><?php echo $item['ten_san_pham'] . ' x ' . $item['so_luong'] ?></div>
+                                        <div class="price_product_bill"><?php echo $item['tong_tien'] ?>đ</div>
                                     </div>
                                 <?php
                                 }

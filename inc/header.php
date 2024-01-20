@@ -36,6 +36,7 @@ require './lib/list_cart_icon.php';
 
 <body>
     <div class="main_app">
+        
         <div class="header ">
             <div class="box_header ">
                 <div class="box_header_page">
@@ -68,7 +69,7 @@ require './lib/list_cart_icon.php';
                                                     <a href="?page=history_bill" class="list_user_item_link"> Lịch sử mua hàng </a>
                                                 </li>
                                                 <li class="list_user_item">
-                                                    <a href="" class="list_user_item_link"> Thông tin quản lý </a>
+                                                    <a href="?page=info_user" class="list_user_item_link"> Thông tin quản lý </a>
                                                 </li>
                                                 <li class="list_user_item">
                                                     <a href="?page=logout" class="list_user_item_link"> Đăng xuất </a>
@@ -124,9 +125,9 @@ require './lib/list_cart_icon.php';
                                         ?>
                                                 <div class="cart_hover_item_list">
                                                     <div class="cart_hover_item_img">
-                                                        <img src="./public/image/upload/<?php echo $item['ảnh_sản_phẩm'] ?>" alt="" class="cart_hover_item_img_item">
+                                                        <img src="./public/image/upload/<?php echo $item['anh_san_pham'] ?>" alt="" class="cart_hover_item_img_item">
                                                     </div>
-                                                    <div class="cart_hover_item_name"> <?php echo $item['tên_sản_phẩm'] ?> x <?php echo $item['số_lượng'] ?> </div>
+                                                    <div class="cart_hover_item_name"> <?php echo $item['ten_san_pham'] ?> x <?php echo $item['so_luong'] ?> </div>
                                                 </div>
                                             <?php
                                             }

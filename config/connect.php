@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','tnt-shop');
+$conn = mysqli_connect('localhost:3307','root','','tnt-shop');
 if($conn){
     // echo "Kết nối thành công";
 }

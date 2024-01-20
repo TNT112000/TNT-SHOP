@@ -17,17 +17,16 @@ require './lib/add_blog.php';
             <div class="name_add_product">Ảnh đại diện bài viết</div>
             <div class="display_img_product">
 
-                <input type="file" name="image_blog" class="">
+                <img class="image-upload" src="../public/image/upload/add.jpg" alt="Mô tả ảnh">
+                <input type="file" id='image_product' class='image_product' name="image_blog">
             </div>
             <div class="error_product"> <?php echo show_error("image_blog") ?></div>
         </div>
 
         <div class="box_add_product">
             <div class="name_add_product">Nội dung</div>
-            <textarea name="detail_blog" id="editor1"></textarea>
-            <script>
-                CKEDITOR.replace('editor1');
-            </script>
+            <textarea name="detail_blog" id="editor1" class="textarea" style="height: 400px;"></textarea>
+
             <div class="error_product"> <?php echo show_error("detail_blog") ?></div>
         </div>
 

@@ -39,18 +39,18 @@ require './lib/list_bill.php';
                                     <td class="list_product_item_1"><?php echo $stt++; ?>
                                     </td>
 
-                                    <td class="list_product_item_1"><?php echo $item["tên_người_mua"] ?></td>
+                                    <td class="list_product_item_1"><?php echo $item["ten_nguoi_mua"] ?></td>
                                     <td class="list_product_item_1"><?php echo $item["SĐT"] ?></td>
-                                    <td class="list_product_item_1"><?php echo $item["địa_chỉ"] ?></td>
-                                    <td class="list_product_item_1"><?php echo $item["ngày_mua"] ?></td>
-                                    <?php if ($item["trạng_thái"] == 'Chưa giao') { ?>
-                                        <td class="list_product_item_1" style="color:red"><?php echo $item["trạng_thái"] ?></td>
+                                    <td class="list_product_item_1"><?php echo $item["dia_chi"] ?></td>
+                                    <td class="list_product_item_1"><?php echo $item["ngay_mua"] ?></td>
+                                    <?php if ($item["trang_thai"] == 'Chưa giao') { ?>
+                                        <td class="list_product_item_1" style="color:red"><?php echo $item["trang_thai"] ?></td>
                                     <?php
-                                    } elseif ($item["trạng_thái"] == 'Đã giao'){
+                                    } elseif ($item["trang_thai"] == 'Đã giao'){
                                     ?>
-                                        <td class="list_product_item_1" style="color:green"><?php echo $item["trạng_thái"] ?></td>
+                                        <td class="list_product_item_1" style="color:green"><?php echo $item["trang_thai"] ?></td>
                                     <?php } else{?>
-                                        <td class="list_product_item_1" style="color:orange"><?php echo $item["trạng_thái"] ?></td>
+                                        <td class="list_product_item_1" style="color:orange"><?php echo $item["trang_thai"] ?></td>
                                         <?php
                                             }
                                             ?>

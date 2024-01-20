@@ -25,10 +25,10 @@ require './lib/search_product.php';
                                 <div class="list_product_box">
                                     <div class="list_product_item">
                                         <a href="?page=product_detail&id=<?php echo $id ?>" class="list_product_image">
-                                            <img src="./public/image/upload/<?php echo $item["ảnh_sản_phẩm"] ?>" class="list_product_image_item" alt="">
+                                            <img src="./public/image/upload/<?php echo $item["anh_san_pham"] ?>" class="list_product_image_item" alt="">
                                         </a>
-                                        <div class="list_product_name"><?php echo $item["tên_sản_phẩm"] ?></div>
-                                        <div class="list_product_rice"><?php echo $item["giá_tiền"] ?></div>
+                                        <div class="list_product_name"><?php echo $item["ten_san_pham"] ?></div>
+                                        <div class="list_product_rice"><?php echo $item["gia_tien"] ?></div>
                                     </div>
                                     <div class="list_product_btn">
                                         <a class="list_product_btn_cart">Thêm giỏ hàng</a>

@@ -392,7 +392,7 @@ input:focus {
 /* ========================================= */
 /* CONTENT HOME*/
 
-.content {
+.content{
     min-height: 610px;
     padding: 30px 0 50px 0;
     width: 100%;
@@ -909,6 +909,7 @@ input:focus {
 
 .box_content_blog_detail {
     font-size: 17px !important;
+    padding: 0 20px 0 20px;
 }
 
 span {
@@ -1285,3 +1286,5 @@ span {
     padding: 15px;
     
 }
+
+

@@ -20,7 +20,7 @@ if (isset($_POST["add_cart"])) {
     if (isset($_SESSION["is_login"])) {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $sql = "SELECT * FROM sản_phẩm where id_sp='$id'";
+            $sql = "SELECT * FROM san_pham where id_sp='$id'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -34,8 +34,8 @@ if (isset($_POST["add_cart"])) {
             } else {
 
                 foreach ($detail_product_1 as $item) {
-                    $sql_1 = "INSERT INTO gio_hang (tên_sản_phẩm , ảnh_sản_phẩm , giá_tiền , id_sp , id_tk, tổng_tiền , số_lượng) 
-                Values ('{$item["tên_sản_phẩm"]}','{$item["ảnh_sản_phẩm"]}','{$item["giá_tiền"]}','$id','{$_SESSION["id"]}','{$item["giá_tiền"]}','1')";
+                    $sql_1 = "INSERT INTO gio_hang (ten_san_pham , anh_san_pham , gia_tien , id_sp , id_tk, tong_tien , so_luong) 
+                Values ('{$item["ten_san_pham"]}','{$item["anh_san_pham"]}','{$item["gia_tien"]}','$id','{$_SESSION["id"]}','{$item["gia_tien"]}','1')";
                     $result_1 = mysqli_query($conn, $sql_1);
                     if ($result_1) {
                     } else {

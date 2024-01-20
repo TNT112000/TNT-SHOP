@@ -11,12 +11,18 @@ require './lib/contact.php';
             <div class="list_product">
                 <div class="list_product_title">Liên hệ</div>
                 <div class="box_content_blog">
-                    <div class="box_content_blog_item">
-                        <div class="box_content_blog_name"><?php echo $update_introduce['tên_liên_hệ'] ?></div>
-                        <div class="box_content_blog_date"><?php echo $update_introduce['mở_đầu'] ?></div>
-                        
-                        <div class="box_content_blog_detail"><?php echo $update_introduce['liên_hệ'] ?></div>
-                    </div>
+                    <?php
+                    if (isset($update_introduce)) {
+                    ?>
+                        <div class="box_content_blog_item">
+                            <div class="box_content_blog_name"><?php echo $update_introduce['ten_lien_he'] ?></div>
+                            <div class="box_content_blog_date"><?php echo $update_introduce['mo_dau'] ?></div>
+
+                            <div class="box_content_blog_detail"><?php echo $update_introduce['lien_he'] ?></div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-$sql="SELECT * FROM sản_phẩm ";
+$sql="SELECT * FROM san_pham ";
    $result=mysqli_query($conn,$sql);
    if(mysqli_num_rows($result)>0){
       while($row=mysqli_fetch_assoc($result)){

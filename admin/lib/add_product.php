@@ -18,7 +18,7 @@ if (isset($_POST["btn_add_product"])) {
     if (!empty($_POST["name_product"])) {
         $name_product = $_POST["name_product"];
     } else {
-        $error["name_product"] = "Tên sản phẩm không được bot trống";
+        $error["name_product"] = "Tên sản phẩm không được bỏ trống";
     }
     if (!empty($_POST["price_product"])) {
         $price_product = $_POST["price_product"];
@@ -56,15 +56,15 @@ if (isset($_POST["btn_add_product"])) {
 
 
     if (empty($error)) {
-        $sql_1 = "SELECT * from sản_phẩm where tên_sản_phẩm='$name_product' and mã_sản_phẩm='$ma_product'";
+        $sql_1 = "SELECT * from san_pham where ten_san_pham='$name_product' and ma_san_pham='$ma_product'";
         $result1 = mysqli_query($conn, $sql_1);
         if (mysqli_num_rows($result1) > 0) {
             $product = mysqli_fetch_assoc($result1);
-            $num_product = $product["số_lượng"] + $num_product;
-            $sql_2 = "UPDATE sản_phẩm SET số_lượng='$num_product' WHERE id_sp='{$product["id_sp"]}'";
+            $num_product = $product["so_luong"] + $num_product;
+            $sql_2 = "UPDATE san_pham SET so_luong='$num_product' WHERE id_sp='{$product["id_sp"]}'";
             $result2 = mysqli_query($conn, $sql_2);
         } else {
-            $sql = "INSERT INTO sản_phẩm (tên_sản_phẩm, mã_sản_phẩm, tên_danh_mục, giá_tiền, số_lượng, ảnh_sản_phẩm, mô_tả, cấu_hình) 
+            $sql = "INSERT INTO san_pham (ten_san_pham, ma_san_pham, ten_danh_muc, gia_tien, so_luong, anh_san_pham, mo_ta, cau_hinh) 
         VALUES ('$name_product', '$ma_product', '$category_product', '$price_product', '$num_product', '$image_product', '$detail_product', '$des_product')";
 
             if (mysqli_query($conn, $sql)) {

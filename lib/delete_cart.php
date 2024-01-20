@@ -13,14 +13,14 @@ if(mysqli_num_rows($result_all)>0){
 
 $total_all_id=0;
 foreach($list_gh as $item){
-    $total_all_id+=$item['tổng_tiền'];
+    $total_all_id+=$item['tong_tien'];
 }
 
 $sql_se="SELECT * from gio_hang where id_gh='$id'";
 $result_se=(mysqli_query($conn,$sql_se));
 $content_gh=mysqli_fetch_assoc($result_se);
 
-$total_all=$total_all_id - ($content_gh['số_lượng']*$content_gh['giá_tiền']);
+$total_all=$total_all_id - ($content_gh['so_luong']*$content_gh['gia_tien']);
 
 $sql="DELETE from gio_hang where id_gh='$id' ";
 $result=(mysqli_query($conn,$sql));

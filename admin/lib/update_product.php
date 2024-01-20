@@ -2,7 +2,7 @@
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql_pr_1 = "SELECT * from sản_phẩm where id_sp='{$id}'";
+    $sql_pr_1 = "SELECT * from san_pham where id_sp='{$id}'";
     $result_pr_1 = mysqli_query($conn, $sql_pr_1);
     if (mysqli_num_rows($result_pr_1) > 0) {
         while ($row = mysqli_fetch_assoc($result_pr_1)) {
@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
 if (isset($_POST['update_product'])) {
 
     if (empty($_FILES["image_product"]["name"])) {
-        $image_product = $update_sp_1["ảnh_sản_phẩm"];
+        $image_product = $update_sp_1["anh_san_pham"];
     } else {
         $upload_dir = "../public/image/upload/";
         // ĐƯỜNG DẪN FILE SAU KHI SỬA
@@ -25,7 +25,7 @@ if (isset($_POST['update_product'])) {
             if (!empty($_FILES["image_product"]["name"])) {
                 $image_product = $_FILES["image_product"]["name"];
             } else {
-                $error["file_img"] = "Ảnh sản phẩm không được bỏ trống";
+                $error["file_img"] = "anh sản phẩm không được bỏ trống";
             }
         } else {
             $error["file_img"] = "upload file không thành công";
@@ -73,7 +73,7 @@ if (isset($_POST['update_product'])) {
 
     if (empty($error)) {
         $id = $_GET['id'];
-        $sql_1 = "UPDATE sản_phẩm SET tên_sản_phẩm='$name_product', mã_sản_phẩm='$ma_product' , số_lượng='$num_product' , ảnh_sản_phẩm='$image_product' , mô_tả='$detail_product' , cấu_hình='$des_product' , tên_danh_mục='$category_product' , giá_tiền='$price_product' WHERE id_sp='{$id}'";
+        $sql_1 = "UPDATE san_pham SET ten_san_pham='$name_product', ma_san_pham='$ma_product' , so_luong='$num_product' , anh_san_pham='$image_product' , mo_ta='$detail_product' , cau_hinh='$des_product' , ten_danh_muc='$category_product' , gia_tien='$price_product' WHERE id_sp='{$id}'";
         $result1 = mysqli_query($conn, $sql_1);
         if ($result1) {
             $error["add_product"] = "Chỉnh sửa thành công";
@@ -86,12 +86,11 @@ if (isset($_POST['update_product'])) {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql_pr = "SELECT * from sản_phẩm where id_sp='{$id}'";
+    $sql_pr = "SELECT * from san_pham where id_sp='{$id}'";
     $result_pr = mysqli_query($conn, $sql_pr);
     if (mysqli_num_rows($result_pr) > 0) {
         while ($row = mysqli_fetch_assoc($result_pr)) {
             $update_sp = $row;
         }
     }
-    
 }

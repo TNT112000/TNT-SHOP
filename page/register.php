@@ -1,3 +1,6 @@
+<?php
+require "./lib/register_hd.php";
+?>
 
 
 <!DOCTYPE html>

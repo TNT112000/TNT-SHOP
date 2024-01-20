@@ -4,7 +4,7 @@ require '../config/connect.php';
 
 if (isset($_SESSION['is_login'])) {
     $id = $_POST['id'];
-    $sql_like = "SELECT * FROM yeu_thich,sản_phẩm where yeu_thich.id_sp=sản_phẩm.id_sp and sản_phẩm.id_sp='$id'";
+    $sql_like = "SELECT * FROM yeu_thich,san_pham where yeu_thich.id_sp=san_pham.id_sp and san_pham.id_sp='$id'";
     $result_like = mysqli_query($conn, $sql_like);
     if (mysqli_num_rows($result_like) > 0) {
         while ($row = mysqli_fetch_assoc($result_like)) {
@@ -26,6 +26,7 @@ if (isset($_SESSION['is_login'])) {
 <i id='icon_like' class='fa-solid fa-check'></i>
 <div id='like_product' class='like_product'>{$num_like_up}</div>
 </div>";
+
 }
 
 

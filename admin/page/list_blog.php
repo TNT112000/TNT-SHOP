@@ -32,24 +32,26 @@ require "./lib/list_blog.php"
 
             <tbody>
                 <?php
-                $stt = 1;
-                foreach ($list_blog as $item) {
-                  
-                    $product['url_update'] = "?page=update_blog&id={$item['id_bv']}";
-                    $product['url_delete'] = "?page=delete_blog&id={$item['id_bv']}";
+                if (!empty($list_blog)) {
+                    $stt = 1;
+                    foreach ($list_blog as $item) {
+
+                        $product['url_update'] = "?page=update_blog&id={$item['id_bv']}";
+                        $product['url_delete'] = "?page=delete_blog&id={$item['id_bv']}";
                 ?>
-                    <tr>
-                        <td class="list_product_item"><?php echo $stt++; ?>
-                        </td>
+                        <tr>
+                            <td class="list_product_item"><?php echo $stt++; ?>
+                            </td>
 
-                        <td class="list_product_item"><?php echo $item["tên_bài_viết"] ?></td>
-                        <td class="list_product_item"><?php echo $item["ngày_đăng"] ?></td>
-                        
-                        <td class=""><a href="<?php echo $product['url_update'] ?>" class=""><i class="fa-sharp fa-solid fa-pen-to-square"></i></a></td>
-                        <td class=""><a href="<?php echo $product['url_delete'] ?>" class=""><i class="fa-solid fa-trash"></i></a></td>
+                            <td class="list_product_item"><?php echo $item["ten_bai_viet"] ?></td>
+                            <td class="list_product_item"><?php echo $item["ngay_dang"] ?></td>
 
-                    </tr>
+                            <td class=""><a href="<?php echo $product['url_update'] ?>" class=""><i class="fa-sharp fa-solid fa-pen-to-square"></i></a></td>
+                            <td class=""><a href="<?php echo $product['url_delete'] ?>" class=""><i class="fa-solid fa-trash"></i></a></td>
+
+                        </tr>
                 <?php
+                    }
                 }
                 ?>
 

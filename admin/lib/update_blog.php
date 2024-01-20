@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
 
 if (isset($_POST['update_blog'])) {
     if (empty($_FILES["image_blog"]["name"])) {
-        $image_blog = $update_blog_1["ảnh_bài_viết"];
+        $image_blog = $update_blog_1["anh_bai_viet"];
     } else {
         $upload_dir = "../public/image/upload/";
         // ĐƯỜNG DẪN FILE SAU KHI SỬA
@@ -43,7 +43,7 @@ if (isset($_POST['update_blog'])) {
 
     if (empty($error)) {
         $id = $_GET['id'];
-        $sql_1 = "UPDATE bai_viet SET tên_bài_viết='$name_blog', nội_dung='$detail_blog' , ảnh_bài_viết='$image_blog' WHERE id_bv='{$id}'";
+        $sql_1 = "UPDATE bai_viet SET ten_bai_viet='$name_blog', noi_dung='$detail_blog' , anh_bai_viet='$image_blog' WHERE id_bv='{$id}'";
         $result1 = mysqli_query($conn, $sql_1);
         if ($result1) {
             $error["add_blog"] = "Chỉnh sửa thành công";

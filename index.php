@@ -7,8 +7,6 @@ require './lib/product_nb.php';
 require './lib/cart.php';
 require "./lib/add_cart.php";
 require './lib/category_product.php';
-require "./lib/login_hd.php";
-require "./lib/register_hd.php";
 require "./config/function.php";
 
 if (isset($_GET["page"])) {

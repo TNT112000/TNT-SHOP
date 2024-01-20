@@ -10,24 +10,23 @@ require './lib/update_blog.php';
         <div class="error_product"> <?php echo show_error("add_blog"); ?> </div>
         <div class="box_add_product">
             <div class="name_add_product">Tên bài viết</div>
-            <textarea name="name_blog" id="" cols="40" rows="4"><?php echo $update_blog['tên_bài_viết'] ?>"</textarea>
+            <textarea name="name_blog" id="" cols="40" rows="4"><?php echo $update_blog['ten_bai_viet'] ?></textarea>
             <div class="error_product"> <?php echo show_error("name_blog"); ?> </div>
         </div>
         <div class="box_add_product">
             <div class="name_add_product">Ảnh đại diện bài viết</div>
             <div class="display_img_product">
 
-                <input type="file" name="image_blog" class="">
+                <img class="image-upload" src="../public/image/upload/<?php echo $update_blog["anh_bai_viet"] ?>" alt="Mô tả ảnh">
+                <input type="file" id='image_product' class='image_product' name="image_blog">
             </div>
             <div class="error_product"> <?php echo show_error("image_blog") ?></div>
         </div>
 
         <div class="box_add_product">
             <div class="name_add_product">Nội dung</div>
-            <textarea name="detail_blog" id="editor1"><?php echo $update_blog['nội_dung'] ?>"</textarea>
-            <script>
-                CKEDITOR.replace( 'editor1' );
-            </script>
+            <textarea style="height: 400px;" class="textarea" name="detail_blog" id="editor1"><?php echo $update_blog['noi_dung'] ?></textarea>
+
             <div class="error_product"> <?php echo show_error("detail_blog") ?></div>
         </div>
 

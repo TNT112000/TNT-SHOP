@@ -12,6 +12,9 @@ a{
 .header_user:hover .box_list_user{
     display: block;
 }
-.link_add_product :hover{
+.link_add_product:hover{
+    color: white;
+}
+.list_link_page:hover{
     color: white;
 }

@@ -2,8 +2,8 @@
 
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    // $sql="SELECT * FROM yeu_thich,sản_phẩm where yeu_thich.id_sp=sản_phẩm.id_sp and id_sp='$id'";
-    $sql = "SELECT * FROM sản_phẩm where  id_sp='$id'";
+    // $sql="SELECT * FROM yeu_thich,san_pham where yeu_thich.id_sp=san_pham.id_sp and id_sp='$id'";
+    $sql = "SELECT * FROM san_pham where  id_sp='$id'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
@@ -32,7 +32,7 @@ if (isset($_GET["id"])) {
         if (mysqli_num_rows($result_3) > 0) {
             $icon_num_like = 1;
         } else {
-            $icon_num_like = 0;
+            $icon_num_like ;
         }
     }
 }

@@ -17,7 +17,7 @@ require './lib/product_dm.php';
                     <?php
                     if (isset($list_product_category)) {
                         foreach ($list_product_category as $item) {
-                            $price = $item["giá_tiền"];
+                            $price = $item["gia_tien"];
                             $formatNumber = number_format($price,0, '.', '.');
                             $id = $item["id_sp"];
                     ?>
@@ -26,9 +26,9 @@ require './lib/product_dm.php';
                                 <div class="list_product_box">
                                     <div class="list_product_item">
                                         <a href="?page=product_detail&id=<?php echo $id ?>" class="list_product_image">
-                                            <img src="./public/image/upload/<?php echo $item["ảnh_sản_phẩm"] ?>" class="list_product_image_item" alt="">
+                                            <img src="./public/image/upload/<?php echo $item["anh_san_pham"] ?>" class="list_product_image_item" alt="">
                                         </a>
-                                        <div class="list_product_name"><?php echo $item["tên_sản_phẩm"] ?></div>
+                                        <div class="list_product_name"><?php echo $item["ten_san_pham"] ?></div>
                                         <div class="list_product_rice"><?php echo $formatNumber ?>đ</div>
                                     </div>
                                     <div class="list_product_btn">

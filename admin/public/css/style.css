@@ -129,7 +129,7 @@ input:focus {
 
 .content {
     display: flex;
-    height: 717px;
+    height: calc(100% - 70px - 50px);
 }
 
 .footer {
@@ -201,7 +201,7 @@ input:focus {
 
 .display_img_product {
     display: flex;
-    align-items: center;
+    flex-direction: column-reverse;
 }
 
 .box_add_product_item {
@@ -361,3 +361,26 @@ input:focus {
     padding: 20px;
     border: 1px solid #ccc;
 }
+.image_product{
+   margin-bottom: 25px;
+}
+.content_img_product{
+    width: 150px;
+    height: 150px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 150px;
+    font-weight: 700;
+}
+.image-upload{
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+

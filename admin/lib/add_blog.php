@@ -24,7 +24,7 @@ if (isset($_POST['btn_add_blog'])) {
     }
 
     if(empty($error)){
-        $sql="INSERT INTO bai_viet (tên_bài_viết,nội_dung,ảnh_bài_viết,ngày_đăng)
+        $sql="INSERT INTO bai_viet (ten_bai_viet,noi_dung,anh_bai_viet,ngay_dang)
         VALUES ('$name_blog','$detail_blog','$image_blog',NOW())";
         $result=mysqli_query($conn,$sql);
         if($result){

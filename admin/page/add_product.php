@@ -7,16 +7,18 @@ require "./lib/add_product.php";
     <form enctype="multipart/form-data" action="" method="post">
         <div class="title_add_product">Thêm sản phẩm</div>
         <div class="error_product"> <?php echo show_error("add_product"); ?> </div>
-        <div class="box_add_product">
-            <div class="name_add_product">Tên sản phẩm</div>
-            <input type="text" name="name_product" class="input_add_product">
-            <div class="error_product"> <?php echo show_error("name_product"); ?> </div>
-        </div>
+
         <div class="box_add_product">
             <div class="name_add_product">Mã sản phẩm</div>
             <input type="text" name="ma_product" class="input_add_product">
             <div class="error_product"> <?php echo show_error("ma_product") ?></div>
         </div>
+        <div class="box_add_product">
+            <div class="name_add_product">Tên sản phẩm</div>
+            <input type="text" name="name_product" class="input_add_product">
+            <div class="error_product"> <?php echo show_error("name_product"); ?> </div>
+        </div>
+        
         <div class="box_add_product">
             <div class="box_add_product_item">
                 <div class="">
@@ -50,26 +52,28 @@ require "./lib/add_product.php";
 
                 foreach ($list_category_product as $item) {
                 ?>
-                    <option value="<?php echo $item["tên_danh_mục"] ?>"><?php echo $item["tên_danh_mục"] ?> </option>
+                    <option value="<?php echo $item["ten_danh_muc"] ?>"><?php echo $item["ten_danh_muc"] ?> </option>
                 <?php }  ?>
             </select>
             <div class="error_product"> <?php echo show_error("category_product") ?></div>
         </div>
         <div class="box_add_product">
             <div class="name_add_product">Mô tả ngắn</div>
-            <textarea name="des_product" id="" cols="60" rows="10"></textarea>
+            <textarea class="textarea" name="des_product" id="" cols="60" rows="10"></textarea>
             <div class="error_product"> <?php echo show_error("des_product") ?></div>
         </div>
         <div class="box_add_product">
             <div class="name_add_product">Chi tiết</div>
-            <textarea name="detail_product" id="" cols="70" rows="13"></textarea>
+            <textarea class="textarea" name="detail_product" id="" cols="70" rows="13"></textarea>
             <div class="error_product"> <?php echo show_error("detail_product") ?></div>
         </div>
 
         <div class="box_add_product">
             <div class="name_add_product">Ảnh sản phẩm</div>
             <div class="display_img_product">
-                <input type="file" id='image_product' class='image_product' name="image_product[]" multiple="multiple">
+                <!-- <label  for="image_product" id="click-image" class="content_img_product">+</label> -->
+                <img class="image-upload" src="../public/image/upload/add.jpg" alt="Mô tả ảnh">
+                <input type="file" id='image_product' class='image_product' name="image_product" >
             </div>
             <div class="error_product"> <?php echo show_error("file_img") ?></div>
         </div>

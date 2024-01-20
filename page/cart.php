@@ -33,25 +33,25 @@
                     $stt = 1;
                     $total_all = 0;
                     foreach ($list_cart as $item) {
-                        $price = $item["giá_tiền"];
+                        $price = $item["gia_tien"];
                         $formatNumber = number_format($price, 0, '.', '.');
-                        $total_all += $item['tổng_tiền'];
-                        $item['tổng_tiền'] = number_format($item['tổng_tiền'], 0, '.', '.');
+                        $total_all += $item['tong_tien'];
+                        $item['tong_tien'] = number_format($item['tong_tien'], 0, '.', '.');
 
                     ?>
                         <div id="remote_<?php echo $item['id_gh'] ?>" class="box_cart_product_item">
 
                             <div class="cart_product_stt"><?php echo $stt++; ?></div>
 
-                            <div class="cart_product_name"><?php echo $item["tên_sản_phẩm"] ?></div>
+                            <div class="cart_product_name"><?php echo $item["ten_san_pham"] ?></div>
                             <div class="cart_product_img">
-                                <img src="./public/image/upload/<?php echo $item["ảnh_sản_phẩm"] ?>" alt="" class="cart_product_img_item">
+                                <img src="./public/image/upload/<?php echo $item["anh_san_pham"] ?>" alt="" class="cart_product_img_item">
                             </div>
                             <div class="cart_product_num">
-                                <input data-id="<?php echo $item["id_gh"] ?>" value="<?php echo $item['số_lượng'] ?>" min="1" max="<?php echo $item['all_num'] ?>" type="number" class="cart_product_num_item">
+                                <input data-id="<?php echo $item["id_gh"] ?>" value="<?php echo $item['so_luong'] ?>" min="1" max="<?php echo $item['all_num'] ?>" type="number" class="cart_product_num_item">
                             </div>
                             <div class="cart_product_price"><?php echo $formatNumber; ?>đ</div>
-                            <div id="cart_fix_<?php echo $item["id_gh"] ?>" class="cart_product_tt-price cart_product_tt-price_js"><?php echo $item['tổng_tiền'] ?>đ</div>
+                            <div id="cart_fix_<?php echo $item["id_gh"] ?>" class="cart_product_tt-price cart_product_tt-price_js"><?php echo $item['tong_tien'] ?>đ</div>
                             <a data-id="<?php echo $item["id_gh"] ?>" class="cart_product_stt delete_cart_item_click"> <i id="delete_cart_item" class="fa-solid fa-delete-left"></i></a>
                         </div>
                     <?php

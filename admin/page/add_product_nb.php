@@ -17,7 +17,7 @@ require './lib/add_product_nb.php';
             <?php
             foreach ($list_name_product as $item) {
             ?>
-                <option value="<?php echo  $item['tên_sản_phẩm'] ?>"><?php echo $item['tên_sản_phẩm'] ?></option>
+                <option value="<?php echo  $item['ten_san_pham'] ?>"><?php echo $item['ten_san_pham'] ?></option>
             <?php
             }
             ?>
@@ -53,7 +53,7 @@ require './lib/add_product_nb.php';
                     <?php
                     $stt = 1;
                     foreach ($list_name_product_1 as $item) {
-                        $price = $item["giá_tiền"];
+                        $price = $item["gia_tien"];
                         $formatNumber = number_format($price, 0, '.', '.');
                         $product['url_update'] = "?page=update_product&id={$item['id_sp']}";
                         $product['url_delete'] = "?page=delete_product_nb&id={$item['id_sp']}";
@@ -62,11 +62,11 @@ require './lib/add_product_nb.php';
                             <td class="list_product_item"><?php echo $stt++; ?>
                             </td>
 
-                            <td class="list_product_item"><?php echo $item["mã_sản_phẩm"] ?></td>
-                            <td class="list_product_item"><?php echo $item["tên_sản_phẩm"] ?></td>
-                            <td class="list_product_item"><?php echo $item["tên_danh_mục"] ?></td>
+                            <td class="list_product_item"><?php echo $item["ma_san_pham"] ?></td>
+                            <td class="list_product_item"><?php echo $item["ten_san_pham"] ?></td>
+                            <td class="list_product_item"><?php echo $item["ten_danh_muc"] ?></td>
                             <td class="list_product_item"><?php echo $formatNumber ?>đ</td>
-                            <td class="list_product_item"><?php echo $item["số_lượng"] ?></td>
+                            <td class="list_product_item"><?php echo $item["so_luong"] ?></td>
                             <td class=""><a href="<?php echo $product['url_update'] ?>" class=""><i class="fa-sharp fa-solid fa-pen-to-square"></i></a></td>
                             <td class=""><a href="<?php echo $product['url_delete'] ?>" class=""><i class="fa-solid fa-trash"></i></a></td>
 

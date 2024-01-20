@@ -55,13 +55,13 @@ if (isset($_POST["btn_register"])) {
         $error["password_repeat"] = "Mật khẩu chưa được nhập lại";
     }
     if (empty($error)) {
-        $sql = "SELECT * from tai_khoan where tên_đăng_nhập='{$_POST["username"]}'";
+        $sql = "SELECT * from tai_khoan where ten_dang_nhap='{$_POST["username"]}'";
         $result = mysqli_query($conn, $sql);
         
         if (mysqli_num_rows($result) < 1) {
             $password = md5($password);
             $level = '0';
-            $sql = "INSERT INTO tai_khoan (tên_đăng_nhập,mật_khẩu,email,ngày_tạo,cấp_bậc) VALUES ('$username','$password','$email',NOW(),'$level')";
+            $sql = "INSERT INTO tai_khoan (ten_dang_nhap,mat_khau,email,ngay_tao) VALUES ('$username','$password','$email',NOW())";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 $success["register"] = "Đăng ký thành công";
